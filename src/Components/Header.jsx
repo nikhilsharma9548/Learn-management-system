@@ -4,25 +4,16 @@ import { AppContext } from '../Context/AppContext';
 import { CgProfile } from "react-icons/cg";
 import { assets } from '../assets/assets';
 import { Link } from 'react-router-dom';
+import {useClerk, UserButton, useUser} from '@clerk/clerk-react';
 
-
-
-  
 
 const Header = () => { 
   const {navigate} = useContext(AppContext);
-  const [showSecondDiv, setShowSecondDiv] = useState(false); 
-//   const [menuOpen, setMenuOpen] = useState(false);
 
-//     const toggleMenu = () => {
-//     setMenuOpen(!menuOpen);
-// };
-//   const navItems = [
-//     { name: "Home", link: "Home" },
-//     { name: "About", link: "About" },
-//     { name: "Courses", link: "CourseCard" },
-//     { name: "Contact", link: "Contact" },
-//   ];
+  //clerk Authtication
+  
+  const {openSignIn} = useClerk()
+  const {user,isSignedIn} = useUser() 
 
   return (
     <header className='z-50 flex justify-between shadow-xl bg-[#95a8dd] items-center overflow-hidden fixed  left-0 top-0 w-full text-black '> 
@@ -33,23 +24,21 @@ const Header = () => {
           navigate('/')
         }
         } />
-      </div>
-      
+      </div>   
 
-      
-        {/* mobile veiw */}
-
-        <div className='flex justify-end text-3xl items-center sm:gap-4 gap-2 xs:pr-20 pr-7'
-          onClick={() => setShowSecondDiv(prev => !prev)}> 
-
-          {showSecondDiv && (
-            <div className=' hover:cursor-pointer  sm:text-base font-semibold text-sm  bg-[#95a8dd] rounded' onClick={() =>{
-              navigate('/enrollments');
-              setShowSecondDiv(false);
-            }}>My Enrollments</div>
+        <div className='flex justify-end text-3xl items-center sm:gap-4 gap-2 sm:pr-20 pr-7' > 
+          {isSignedIn && (
+              <div className=" text-black font-semibold sm:text-base text-xs cursor-pointer duration-300 rounded-md"
+               onClick={()=>{
+                navigate('/enrollments');
+               }}
+               >
+                My Enrollment
+              </div>
           )}
-
-          <p className=' transform transition-transform font-medium text-blue-900/90 hover:scale-110'><CgProfile /></p>    
+             { user ? <UserButton /> :
+              <button className='bg-blue-600 text-sm shadow-gray-700 cursor-pointer max-sm:text-xs  hover:transition duration-500  hover:bg-blue-800   hover:-translate-y-0.5
+              shadow text-white rounded-full px-4 py-2' onClick={()=>{openSignIn()}}>Create Account</button> }
         </div>
 
     

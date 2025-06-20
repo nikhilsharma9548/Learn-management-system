@@ -20,32 +20,28 @@ function App() {
   return (
     <div className="overflow-hidden text-default  min-h-screen ">
 
-     < Header />
+    < Header />
       <Routes>
-        <Route 
-          path="/" 
-          element={
-            <>
-              <Hero />
-              <Companies />
-              <CourseCard />
-              <Testimonials />
-            </>
-          }/>
-  
+          <Route 
+            path="/" 
+            element={
+              <>
+                <Hero />
+                <Companies />
+                <CourseCard />
+                <Testimonials />
+              </>
+            }/>
+    
           <Route path='/course-list' element={<CourseList />} />
-        <Route path='/course-list/:input' element={<CourseList />} />
-        
-
-        <Route path='/course/:id' element={<CourseDetails/>} />
-        <Route path='/enrollments' element={<MyEnrollments />} />
-        <Route path="/player/:courseId" element={<Player />} />
-        <Route path='/loading/:path' element = {<Loading />} />
-
-      
+          <Route path='/course-list/:input' element={<CourseList />} />
+          <Route path='/course/:id' element={<CourseDetails/>} />
+          <Route path='/enrollments' element={<MyEnrollments />} />
+          <Route path="/player/:courseId" element={<Player />} />
+          <Route path='/loading/:path' element = {<Loading />} />
       </Routes>
       
-      <Footer />
+    <Footer />
 
       {/* toaster  */}
 

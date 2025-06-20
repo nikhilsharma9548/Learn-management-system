@@ -15,9 +15,9 @@ const CourseDetails = () => {
   
     const [showModal, setShowModal] = useState(false);
 
-  // const handleEnrollClick = () => {
-  //   setShowModal(true);
-  // };
+  const handleEnrollClick = () => {
+    setShowModal(true);
+  };
 
   const handleClose = () => {
     setShowModal(false);
@@ -161,26 +161,26 @@ const getYouTubeVideoId = (url) => {
 
               <div className='flex flex-col gap-2 px-7 bg-white z-10'>
                   <button className='md:mt-2 mt-4 w-full py-3 rounded bg-blue-600 hover:bg-blue-700 hover:scale-95 hover:duration-700 text-white font-medium'
-                   onClick={handleSubmit}>
+                   onClick={handleEnrollClick}>
                     
                     {isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Now'}</button>
               </div>
 
                {
                 showModal && (
-                  <div className="fixed inset-0 flex items-center justify-center  bg-black/50 z-50">
-                    <div className='bg-white rounded-lg p-6 w-auto h-96 bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] max-w-md'>
-                          <h2 className='text-2xl font-semibold mb-5'>CourseDetails</h2>
+                  <div className="fixed inset-0 flex items-center  justify-center h-auto bg-black/50 z-50">
+                    <div className='bg-white  md:p-12 p-6 w-auto h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd] max-w-xl'>
+                          <h2 className='text-2xl font-semibold text-blue-800 mb-5'>Enroll Form</h2>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                    <input type="text" placeholder="Name" className="border p-2 rounded" required />
-                       <input type="email" placeholder="Email" className="border p-2 rounded" required />
-                       <input type="text" placeholder="Phone" className="border p-2 rounded" required />
+                    <input type="text" placeholder="Enter the student Name" className="border p-2 rounded " required />
+                       <input type="email" placeholder="Enter the student Email" className="border p-2 rounded" required />
+                       <input type="text" placeholder="Enter the studebt Phone" className="border p-2 rounded" required />
                           <div className="flex justify-center mt-18 gap-28">
                               <button 
                                     type="button"
                                     onClick={handleClose}
-                                    className="bg-gray-500/50 text-black py-1 px-3 rounded"
+                                    className="bg-gray-500/50 text-black py-1 px-3 "
                               >
                                     Cancel
                                   </button>
@@ -189,7 +189,7 @@ const getYouTubeVideoId = (url) => {
                                     onClick={() =>{
                                       navigate("/enrollments")
                                     }}
-                                    className="bg-blue-600 text-white py-1 px-3 rounded"
+                                    className="bg-blue-600 text-white py-1 px-3 "
                                   >
                                     Submit  
                                   </button>
