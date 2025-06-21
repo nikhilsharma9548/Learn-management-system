@@ -7,10 +7,16 @@ import { FaRegClock } from "react-icons/fa";
 import Loading from './Loading';
 import {useUser} from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
-// const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
+import { useDispatch } from "react-redux";
+import { addCourse } from '../App/enrollSlice';
 import YouTube from 'react-youtube';
 
-const CourseDetails = () => {
+const CourseDetails = ({course}) => {
+   const dispatch = useDispatch();
+
+   const handleEnroll = () => {
+    dispatch(addCourse(course));
+  };
 
   // show to a form 
   
@@ -32,6 +38,7 @@ const CourseDetails = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+     dispatch(addCourse(courseData));
     setShowModal(false);
     navigate("/enrollments")
      toast.success('course enrolled')
@@ -109,6 +116,7 @@ const getYouTubeVideoId = (url) => {
               <p>{courseData.title}</p>
               <p className='text-blue-500 underline font-semibold cursor-pointer'
                 onClick={() =>{
+
                   scrollTo(0,0);
                     setplayerData({
                     videoId: getYouTubeVideoId(courseData.lectureUrl)
@@ -165,7 +173,7 @@ const getYouTubeVideoId = (url) => {
               <div className='flex flex-col gap-2 px-7 bg-white z-10'>
                   <button className='md:mt-2 mt-4 w-full py-3 rounded bg-blue-600 hover:bg-blue-700 hover:scale-95 hover:duration-700 text-white font-medium'
                    onClick={()=>{handleEnrollClick();
-                            handleEnrollButton();
+                            // handleEnrollButton();
                    }}>
                     
                     {isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Now'}</button>

@@ -1,12 +1,19 @@
 import React from 'react'
 import { useContext } from 'react';
 import { AppContext } from '../Context/AppContext';
+import { useSelector, useDispatch } from "react-redux";
+import { removeCourse } from '../App/enrollSlice';
 import { Navigate } from 'react-router-dom';
 
 const MyEnrollments = () => {
 
-  const { enrolledCourses, navigate } = useContext(AppContext);
+  const { navigate } = useContext(AppContext);
+             const dispatch = useDispatch();
+             const courses = useSelector((state) => state.enroll.enrolledCourses);
 
+              const handleRemove = (id) => {
+              dispatch(removeCourse(id));
+  };
         // console.log(enrolledCourses);
 
   return (
@@ -25,12 +32,12 @@ const MyEnrollments = () => {
                 </tr>
             </thead>
             <tbody className=' text-gray-900 sm:text-base  text-xs'>
-              {enrolledCourses.slice(0,3).map((course, index) => (
-                    <tr key={index} className='border-b border-gray-500/80 max-sm:flex max-sm:flex-col '>
+              {courses.map((course) => (
+                    <tr key={course.id} className='border-b border-gray-500/80 max-sm:flex max-sm:flex-col '>
                         <td className='md:px-4 px-0 pl-0 md:pl-4 md:py-3 py-0  item-centernspace-x-4 max-sm:flex-col'>
                             <img src={course.image} alt=""
-                            className='sm:w-72  ' />
-                            <div className='py-2 max-sm:hidden '>
+                            className='sm:w-72 flex ' />
+                            <div className='py-2 max-md:hidden '>
                                 {course.title}
                             </div>
                         </td>
