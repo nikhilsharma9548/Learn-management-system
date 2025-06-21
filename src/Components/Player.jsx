@@ -84,7 +84,7 @@ const playerRef = useRef(null);
               } 
 
 
-              <div className='md:text-3xl text-base md:p-4 p-2 font-semibold cursor-pointer'
+              <div className='md:text-3xl text-base md:p-4 p-3  font-semibold cursor-pointer'
                 onClick={() =>{
                    togglePlayPause();
                   // scrollTo(0,0);
