@@ -107,13 +107,15 @@ const getYouTubeVideoId = (url) => {
              {showSecondDiv && (
             <div className="border border-gray-500/50 rounded-b p-4 flex justify-between bg-white">
               <p>{courseData.title}</p>
-              <p className='text-blue-500 underline hover:cursor-pointer text-sm font-bold' 
-              onClick={()=>
-              {
-                navigate('/player')
-              }
-              }
-               >Watch</p>
+              <p className='text-blue-500 underline font-semibold cursor-pointer'
+                onClick={() =>{
+                  scrollTo(0,0);
+                    setplayerData({
+                    videoId: getYouTubeVideoId(courseData.lectureUrl)
+    });
+
+                }}
+                >preview</p>
             </div>
           )}
 
@@ -145,14 +147,7 @@ const getYouTubeVideoId = (url) => {
                 <p className='w-3.5 text-red-500 '><FaRegClock /></p>
 
                  <p className='text-red-500 md:text-base text-xs'><span className='font-medium '>6 days</span> left at this price!</p>
-                <p className='text-blue-500 underline font-semibold cursor-pointer pl-28'
-                onClick={() =>{
-                    setplayerData({
-                    videoId: getYouTubeVideoId(courseData.lectureUrl)
-    });
-
-                }}
-                >preview</p>
+                
               
             </div>
 
