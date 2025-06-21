@@ -45,10 +45,10 @@ function App() {
 
       {/* toaster  */}
 
-       <ToastContainer 
+       <ToastContainer
         position="top-right"  // ya 'bottom-left', 'bottom-center' etc.
-        autoClose={3000}      // 3 seconds mein band hoga
-        hideProgressBar={false}
+        autoClose={1000}     // 3 seconds mein band hoga
+        hideProgressBar={true}
         newestOnTop
         closeOnClick
         pauseOnHover

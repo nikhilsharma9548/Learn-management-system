@@ -5,8 +5,9 @@ import { IoIosArrowDropup } from "react-icons/io";
 import { useParams } from 'react-router-dom';
 import { FaRegClock } from "react-icons/fa";
 import Loading from './Loading';
+import {useUser} from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
-const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
+// const razorpayKey = import.meta.env.VITE_RAZORPAY_KEY;
 import YouTube from 'react-youtube';
 
 const CourseDetails = () => {
@@ -14,8 +15,14 @@ const CourseDetails = () => {
   // show to a form 
   
     const [showModal, setShowModal] = useState(false);
+    const {isSignedIn } = useUser();
 
   const handleEnrollClick = () => {
+    if (!isSignedIn) {
+      toast.info("Login first to enroll");
+      
+      return;
+  }
     setShowModal(true);
   };
 
@@ -26,22 +33,23 @@ const CourseDetails = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setShowModal(false);
+    navigate("/enrollments")
+     toast.success('course enrolled')
   };
-
+  
+    // openEnrollForm();
 
   const {id} = useParams()
  
-   const [courseData, setCourseData] = useState(null)
+  const [courseData, setCourseData] = useState(null)
   
   const {allCourses, navigate} = useContext(AppContext);
 
- 
-
   const [showSecondDiv, setShowSecondDiv] = useState(); 
 
-   const[isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
+  const[isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
    
-   const[playerData, setplayerData] = useState(null);
+  const[playerData, setplayerData] = useState(null);
 
 const fetchCourseData = async () =>{
 
@@ -161,7 +169,9 @@ const getYouTubeVideoId = (url) => {
 
               <div className='flex flex-col gap-2 px-7 bg-white z-10'>
                   <button className='md:mt-2 mt-4 w-full py-3 rounded bg-blue-600 hover:bg-blue-700 hover:scale-95 hover:duration-700 text-white font-medium'
-                   onClick={handleEnrollClick}>
+                   onClick={()=>{handleEnrollClick();
+                            handleEnrollButton();
+                   }}>
                     
                     {isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Now'}</button>
               </div>
@@ -187,7 +197,7 @@ const getYouTubeVideoId = (url) => {
                                   <button 
                                     type="submit"
                                     onClick={() =>{
-                                      navigate("/enrollments")
+                                      handleSubmit();
                                     }}
                                     className="bg-blue-600 text-white py-1 px-3 "
                                   >

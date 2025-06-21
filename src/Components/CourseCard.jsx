@@ -19,7 +19,7 @@ const CourseCard = () => {
       <div className='flex flex-wrap justify-center items-center gap-10 pt-10 pb-5'>     
         {courses.slice(0,4).map((course, index) => (
           <Link
-          to={'/course/' +course.id}
+          to={'/course/' + course.id}
           onClick={() => scrollTo(0,0)}
           key={index}
            className='flex flex-col hover:cursor-pointer w-72 h-72 bg-white shadow-lg rounded-lg border-1 border-gray-400'>
