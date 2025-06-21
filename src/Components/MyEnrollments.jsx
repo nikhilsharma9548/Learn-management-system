@@ -8,6 +8,7 @@ import { Navigate } from 'react-router-dom';
 const MyEnrollments = () => {
 
   const { navigate } = useContext(AppContext);
+ 
              const dispatch = useDispatch();
              const courses = useSelector((state) => state.enroll.enrolledCourses);
 
@@ -15,6 +16,7 @@ const MyEnrollments = () => {
               dispatch(removeCourse(id));
   };
         // console.log(enrolledCourses);
+        
 
   return (
     <>
@@ -43,11 +45,8 @@ const MyEnrollments = () => {
                         </td>
                         <td className='sm:text-base text-sm relative top-4 sm:top-0  sm:left-0 left-2 max-sm:p-3'>{course.duration}</td>
                         <td className='sm:py-3 py-0 max-sm:text-right'>
-                            <button className='px-5 sm:py-2 py-3 relative sm:bottom-0 bottom-6 max-sm:right-5 text-white rounded bg-blue-600 hover:bg-blue-700'
-                            onClick={ ()=>{
-                               navigate(`/player/${course._id}`)
-
-                            }}
+                            <button className='px-5 sm:py-2 py-3 relative sm:bottom-0 bottom-6 max-sm:right-5 cursor-pointer text-white rounded bg-blue-600 hover:bg-blue-700'
+                           onClick={() => navigate(`/player/${course._id || course.id}`)}
                             >Watch</button>
                         </td>
                     </tr>

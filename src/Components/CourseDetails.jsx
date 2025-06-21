@@ -15,7 +15,7 @@ const CourseDetails = ({course}) => {
    const dispatch = useDispatch();
 
    const handleEnroll = () => {
-    dispatch(addCourse(course));
+    dispatch(addCourse({...course, id: course._id}));
   };
 
   // show to a form 
