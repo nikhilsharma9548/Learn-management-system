@@ -3,7 +3,7 @@ import { useContext } from 'react';
 import { AppContext } from '../Context/AppContext';
 import { useSelector, useDispatch } from "react-redux";
 // import { removeCourse } from '../App/enrollSlice';
-import { Navigate } from 'react-router-dom';
+// import { Navigate } from 'react-router-dom';
 
 const MyEnrollments = () => {
 
