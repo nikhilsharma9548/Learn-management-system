@@ -8,28 +8,27 @@ import Loading from './Loading';
 import {useUser} from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
+import { useSelector } from 'react-redux';
 import { addCourse } from '../App/enrollSlice';
 import YouTube from 'react-youtube';
+import { useNavigate } from 'react-router-dom';
 
-const CourseDetails = ({course}) => {
-   const dispatch = useDispatch();
 
-   const handleEnroll = () => {
-    dispatch(addCourse({...course, id: course._id}));
-  };
 
-  // show to a form 
-  
-    const [showModal, setShowModal] = useState(false);
-    const {isSignedIn } = useUser();
+const CourseDetails = () => {
+
+  const dispatch = useDispatch();
+ 
+     // show to a form 
+  const [showModal, setShowModal] = useState(false);
+  const {isSignedIn, user } = useUser();
 
   const handleEnrollClick = () => {
-    if (!isSignedIn) {
-      toast.info("Login first to enroll");
-      
-      return;
-  }
-    setShowModal(true);
+        if (!isSignedIn) {
+          toast.info("Login first to enroll");
+          return; 
+          }
+        setShowModal(true);
   };
 
   const handleClose = () => {
@@ -37,41 +36,36 @@ const CourseDetails = ({course}) => {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-     dispatch(addCourse(courseData));
-    setShowModal(false);
-    navigate("/enrollments")
-     toast.success('course enrolled')
+      e.preventDefault();
+      dispatch(addCourse(courseData));
+      setShowModal(false);
+      navigate("/enrollments")
+      toast.success('Enroll successfully');
   };
   
-    // openEnrollForm();
-
+  const navigate = useNavigate();
   const {id} = useParams()
- 
-  const [courseData, setCourseData] = useState(null)
-  
-  const {allCourses, navigate} = useContext(AppContext);
-
+  const [courseData, setCourseData] = useState(null) 
+  const {allCourses} = useContext(AppContext);
+  const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
   const [showSecondDiv, setShowSecondDiv] = useState(); 
+  const [playerData, setplayerData] = useState(null);
+//featcing the data
+  const fetchCourseData = async () =>{
+  const findCourse = allCourses.find(course => course.id === id)
+      setCourseData(findCourse);
+  };
 
-  const[isAlreadyEnrolled, setIsAlreadyEnrolled] = useState(false);
-   
-  const[playerData, setplayerData] = useState(null);
-
-const fetchCourseData = async () =>{
-
- const findCourse = allCourses.find(course => course.id === id)
- setCourseData(findCourse);
-}
-
-useEffect(() => {
+  useEffect(() => {
   fetchCourseData()
-
-}, [courseData]);
-
-
+  
+}, [id]);
+const isAlreadyEnrolled = courseData && enrolledCourses.some((c) =>
+  c.id === courseData.id || c._id === courseData.id
+);
+//you-tube video fetching 
 const handleVideoReady = (event) => {
-  const player = event.target;
+const player = event.target;
 
   // Automatically pause video after 30 seconds
   setTimeout(() => {
@@ -80,9 +74,13 @@ const handleVideoReady = (event) => {
 };
 
 const getYouTubeVideoId = (url) => {
-  const urlObj = new URL(url);
+const urlObj = new URL(url);
   return urlObj.searchParams.get("v");
-};
+};  
+  //if course not found
+  if (!courseData) {
+  return <div className="text-center mt-20"><Loading /></div>
+}
 
   return courseData ? (
     
@@ -171,42 +169,51 @@ const getYouTubeVideoId = (url) => {
             </div>
 
               <div className='flex flex-col gap-2 px-7 bg-white z-10'>
-                  <button className='md:mt-2 mt-4 w-full py-3 rounded bg-blue-600 hover:bg-blue-700 hover:scale-95 hover:duration-700 text-white font-medium'
-                   onClick={()=>{handleEnrollClick();
-                            // handleEnrollButton();
-                   }}>
-                    
-                    {isAlreadyEnrolled ? 'Already Enrolled' : 'Enroll Now'}</button>
+                 
+                 <button
+                     disabled={isAlreadyEnrolled}
+                     className={`mt-4 w-full py-3 rounded text-white font-medium cursor-pointer ${
+                       isAlreadyEnrolled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+                       }`}
+                             onClick={handleEnrollClick}>
+                            {isAlreadyEnrolled ? "Already Enrolled" : "Enroll"}
+                      </button>
+
+              
+                  
               </div>
 
                {
                 showModal && (
                   <div className="fixed inset-0 flex items-center  justify-center h-auto bg-black/50 z-50">
-                    <div className='bg-white  md:p-12 p-6 w-auto h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd] max-w-xl'>
+                    
+                    <div className='bg-white rounded-md md:w-96 w-72  md:p-12 p-6 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd] '>
+                      <div className='flex justify-end '>
+                        <button 
+                              type="button"
+                              onClick={handleClose}
+                              className="bg-gray-500/50  hover:bg-gray-500 duration-300 cursor-pointer 
+                              text-black py-0 px-1.5 font-semibold rounded"
+                        >X</button>
+                      </div>
                           <h2 className='text-2xl font-semibold text-blue-800 mb-5'>Enroll Form</h2>
-
-            <form onSubmit={handleSubmit} className="flex flex-col gap-5">
-                    <input type="text" placeholder="Enter the student Name" className="border p-2 rounded " required />
-                       <input type="email" placeholder="Enter the student Email" className="border p-2 rounded" required />
-                       <input type="text" placeholder="Enter the studebt Phone" className="border p-2 rounded" required />
-                          <div className="flex justify-center mt-18 gap-28">
-                              <button 
-                                    type="button"
-                                    onClick={handleClose}
-                                    className="bg-gray-500/50 text-black py-1 px-3 "
-                              >
-                                    Cancel
-                                  </button>
+                  {/* //enroll from  */}
+            <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
+                    <input type="text" placeholder="Enter the student Name" className="border p-2 rounded bg-white "defaultValue={user?.fullName} required />
+                       <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white" defaultValue={user?.primaryEmailAddress?.emailAddress} required />
+                       <input type="text" placeholder="Enter the student Phone" className="border p-2 rounded bg-white" required />
+                          <div className="flex justify-center mt-5">
+                             
                                   <button 
                                     type="submit"
                                     onClick={() =>{
-                                      handleSubmit();
                                     }}
-                                    className="bg-blue-600 text-white py-1 px-3 "
+                                    className="bg-blue-600 text-white rounded cursor-pointer
+                                     hover:bg-blue-800 duration-500 py-1 px-4 "
                                   >
-                                    Submit  
+                                    Enroll  
                                   </button>
-                                </div>
+                          </div>
             </form>
 
                     </div>

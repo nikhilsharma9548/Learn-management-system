@@ -40,6 +40,7 @@ export const AppContextProvider = (props)=>{
             allCourses,
             navigate,
             enrolledCourses,
+            setEnrolledCourses,
            fetchEnrolledCourses,
      }
 

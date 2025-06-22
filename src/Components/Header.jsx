@@ -1,9 +1,7 @@
 import React, { useContext } from 'react'
 import { useState } from "react";
 import { AppContext } from '../Context/AppContext';
-import { CgProfile } from "react-icons/cg";
 import { assets } from '../assets/assets';
-import { Link } from 'react-router-dom';
 import {useClerk, UserButton, useUser} from '@clerk/clerk-react';
 
 
@@ -21,6 +19,7 @@ const Header = () => {
         <img src={assets.Padho}
         onClick={()=>
         {
+          scrollTo(0,0);
           navigate('/')
         }
         } />
