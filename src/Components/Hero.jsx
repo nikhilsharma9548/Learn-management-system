@@ -5,6 +5,7 @@ import Welcome from './Welcome';
 
 const Hero = () => {
   return (
+    <>
     <div id='Home' className='  pt-36 w-full bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] flex items-center  justify-center overflow-hidden'> 
 
         <div className='flex w-[90vw] h-[90vw] md:w-[80vw] md:h-[30vw]  items-center justify-around  shadow-xl rounded-lg bg-white'>
@@ -21,9 +22,10 @@ const Hero = () => {
            </div>
             
         </div>
-        <Welcome/>
+        
     </div>
-    
+    <Welcome/>
+    </>
   )
 }
 

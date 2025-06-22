@@ -9,17 +9,33 @@ import {useUser} from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
-import { addCourse } from '../App/enrollSlice';
+import { addCourse, removeCourse } from '../App/enrollSlice';
 import YouTube from 'react-youtube';
-import { useNavigate } from 'react-router-dom';
+// import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from "framer-motion";
-
-
-
 
 const CourseDetails = () => {
 
+  //Add courses in Myenrollments
   const dispatch = useDispatch();
+  const enrolledCourses = useSelector(state => state.enroll.enrolledCourses);
+  const [courseData, setCourseData] = useState(null) 
+
+  //  console.log("✅ enrolledCourses:", enrolledCourses);
+  //  console.log("✅ courseData:", courseData);
+
+
+  const isEnrolled = enrolledCourses.some(c => c.id === courseData?.id);
+
+
+
+  const handleEnroll = () => {
+      if(!isEnrolled){
+        console.log("📦 Dispatching course:", courseData);
+        dispatch(addCourse(courseData));
+        // dispatch(removeCourse(courseData));
+      }
+  };
  
      // show to a form 
   const [showModal, setShowModal] = useState(false);
@@ -37,19 +53,18 @@ const CourseDetails = () => {
     setShowModal(false);
   };
 
-  const handleSubmit = (e) => {
-      e.preventDefault();
-      dispatch(addCourse(courseData));
-      setShowModal(false);
-      navigate("/enrollments")
-      toast.success('Enroll successfully');
-  };
+ const handleSubmit = (e) => {
+  e.preventDefault();
+  toast.success("Enrolled Succesfully ✅");
+  navigate('/enrollments')
+};
+
   
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {id} = useParams()
-  const [courseData, setCourseData] = useState(null) 
-  const {allCourses} = useContext(AppContext);
-  const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
+ 
+  const {allCourses, navigate} = useContext(AppContext);
+  // const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
   const [showSecondDiv, setShowSecondDiv] = useState(); 
   const [playerData, setplayerData] = useState(null);
 //featcing the data
@@ -60,11 +75,9 @@ const CourseDetails = () => {
 
   useEffect(() => {
   fetchCourseData()
-  
+  // console.log("✅ Course Data:", courseData);
 }, [id]);
-const isAlreadyEnrolled = courseData && enrolledCourses.some((c) =>
-  c.id === courseData.id || c._id === courseData.id
-);
+
 //you-tube video fetching 
 const handleVideoReady = (event) => {
 const player = event.target;
@@ -79,13 +92,9 @@ const getYouTubeVideoId = (url) => {
 const urlObj = new URL(url);
   return urlObj.searchParams.get("v");
 };  
-  //if course not found
-  if (!courseData) {
-  return <div className="text-center mt-20"><Loading /></div>
-}
 
-  return courseData ? (
-    
+
+  return courseData ? ( 
     <>
     <div className='pb-32 flex lg:flex-row flex-col-reverse gap-10  relative item-start justify-between md:px-36 px-8 md:pt-20 mt-20  pt-20 text-left  bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]'>
 
@@ -171,19 +180,20 @@ const urlObj = new URL(url);
             </div>
 
               <div className='flex flex-col gap-2 px-7 bg-white z-10'>
-                 
                  <button
-                     disabled={isAlreadyEnrolled}
+                    onClick={() =>{
+                      handleEnroll();
+                      handleEnrollClick();
+                    }}
+                     disabled={isEnrolled}
                      className={`mt-4 w-full py-3 rounded text-white font-medium cursor-pointer ${
-                       isAlreadyEnrolled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
-                       }`}
-                             onClick={handleEnrollClick}>
-                            {isAlreadyEnrolled ? "Already Enrolled" : "Enroll"}
-                      </button>
-
-              
-                  
+                       isEnrolled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+                       }`}>
+                     {isEnrolled ? "Already Enrolled" : "Enroll"}
+                  </button>
+                
               </div>
+
                 <AnimatePresence>
                {
                 showModal && (
@@ -214,8 +224,6 @@ const urlObj = new URL(url);
                              
                                   <button 
                                     type="submit"
-                                    onClick={() =>{
-                                    }}
                                     className="bg-blue-600 text-white rounded cursor-pointer
                                      hover:bg-blue-800 duration-500 py-1 px-4 "
                                   >

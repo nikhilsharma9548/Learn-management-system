@@ -10,6 +10,7 @@ const Welcome = () => {
 
     const handleClose = () => {
         setShowWelcome(false);
+        
   };
 
     useEffect(() => {
@@ -20,7 +21,7 @@ const Welcome = () => {
     <>   
         <AnimatePresence>
         { showWelcome && (
-        <div className='className=" fixed inset-0 flex items-center  justify-center h-auto z-50 backdrop-blur-xs backdrop-brightness-50'>
+        <div className='fixed inset-0 flex items-center  justify-center h-auto z-50 backdrop-blur-xs backdrop-brightness-50'>
             <motion.div 
                 initial={{ scale: 0.8, opacity: 1 }}
                 animate={{ scale: 1, opacity: 1 }}
@@ -33,7 +34,10 @@ const Welcome = () => {
                         <button 
                               
                               type="button"
-                              onClick={handleClose}
+                              onClick={()=>{
+                                handleClose()
+                                scrollTo(0,0)
+                              }}
                               className="cursor-pointer 
                               text-xl py-0  font-semibold rounded"
                         ><ImCross /></button>
