@@ -9,12 +9,15 @@ const Footer = () => {
         <div className='flex flex-col md:items-start items-center w-full'>
           <img src={assets.Padho2} alt="Padho"
           className='h-18 w-28' />
-          <p className='mt-6 text-center md:text-left text-sm text-white/80'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text</p>
+          <p className='mt-6 text-center md:text-left text-sm text-white/80'>your trusted partner in digital learning.  
+                  We offer high-quality, expert-led courses to help you grow your skills.  
+                  Learn anytime, anywhere with lifetime access and real-world projects.  
+          </p>
         </div>
 
         <div className='flex flex-col md:items-start items-center w-full'>
           <h2 className='font-semibold mb-5'>Company</h2>
-          <ul className='flex md:flex-col gap-4 md:gap-0 justify-center text-xs sm:text-sm text-white md:space-y-2 cursor-pointer '>
+          <ul className='flex md:flex-col sm:gap-4 gap-2 md:gap-0 justify-center text-xs sm:text-sm text-white md:space-y-2 cursor-pointer '>
             <li>Home</li>
             <li>About us</li>
             <li>Contact us</li>

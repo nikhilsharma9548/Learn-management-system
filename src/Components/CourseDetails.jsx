@@ -196,6 +196,7 @@ const urlObj = new URL(url);
                         transition={{ duration: 0.3 }}
                     >
                       <div className='flex justify-end '>
+                        
                         <button 
                               type="button"
                               onClick={handleClose}
