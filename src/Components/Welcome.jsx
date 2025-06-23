@@ -44,7 +44,7 @@ const Welcome = () => {
                 </div>
 
                 <div className='bg-gradient-to-r from-[#c3cfda] to-[#95a8dd]  md:p-10 p-8  rounded-lg'>
-                    <p className='text-[#0b68ec] text-xl pb-5  font-semibold'>20% off on Your Fisrt Enroll</p>
+                    <p className='text-[#0b68ec] text-xl pb-5  font-semibold'>20% off on Your First Enroll</p>
                     <p className="text-sm md:text-base mt-2 ">
                         Hey there! 👋 Glad you're here.  
                         Unlock skills that shape your future.  

@@ -182,7 +182,6 @@ const urlObj = new URL(url);
               <div className='flex flex-col gap-2 px-7 bg-white z-10'>
                  <button
                     onClick={() =>{
-                      handleEnroll();
                       handleEnrollClick();
                     }}
                      disabled={isEnrolled}
@@ -223,6 +222,7 @@ const urlObj = new URL(url);
                           <div className="flex justify-center mt-5">
                              
                                   <button 
+                                    onClick={ handleEnroll}
                                     type="submit"
                                     className="bg-blue-600 text-white rounded cursor-pointer
                                      hover:bg-blue-800 duration-500 py-1 px-4 "
