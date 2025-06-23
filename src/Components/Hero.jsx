@@ -15,7 +15,7 @@ const Hero = () => {
             
               <h1 className='text-3xl pt-5  md:text-2xl xl:text-5xl font-bold text-center'>Welcome to Our <span className='text-blue-600 text-4xl md:text-2.5xl  lg:text-4xl xl:text-5xl'>Learning Management System</span></h1>
               <p className='mt-4 text-center'>Your one-stop solution for online learning and education management.</p>
-              <div className='flex items-center gap-5 justify-between '>
+              <div className='flex items-center md:gap-3 gap-1 justify-between '>
                 <button className='p-2  max-sm:text-xs flex items-center justify-center rounded-full md:mt-10 mt-4 hover:cursor-pointer font-bold bg-blue-300  '>Learn-More </button>
                 <p className='p-2  md:mt-10 mt-4 text-2xl'> <FaArrowRightLong /> </p>
               </div>
