@@ -185,8 +185,8 @@ const urlObj = new URL(url);
                       handleEnrollClick();
                     }}
                      disabled={isEnrolled}
-                     className={`mt-4 w-full py-3 rounded text-white font-medium cursor-pointer ${
-                       isEnrolled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700'
+                     className={`mt-4 w-full py-3 rounded text-white font-medium cursor-pointer  ${
+                       isEnrolled ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:scale-95 duration-500 hover:bg-blue-700'
                        }`}>
                      {isEnrolled ? "Already Enrolled" : "Enroll"}
                   </button>
