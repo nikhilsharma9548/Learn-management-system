@@ -228,15 +228,14 @@ const urlObj = new URL(url);
                 <AnimatePresence>
                {
                 showModal && (
-                  <div className="fixed inset-0 flex md:items-center items-end  justify-center h-auto bg-black/50 z-50">
+                  <div className="fixed inset-0 flex sm:items-center items-end  justify-center h-auto bg-black/50 z-50">
                     
-                    <motion.div className='bg-white rounded-md sm:w-96 w-full shadow-orange-200  md:p-12 p-6 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
+                    <motion.div className='bg-white rounded-md sm:w-96 w-full  shadow-orange-200 sm:p-10 p-14 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
                         initial={{ y: "100%", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: "100%", opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                    >
-                      <div className='flex justify-end '>
+                    ><div className='flex justify-end relative md:bottom-6 bottom-10 md:left-6 left-10'>
                         
                         <button 
                               type="button"
@@ -245,7 +244,7 @@ const urlObj = new URL(url);
                               text-black py-0 px-1.5 font-semibold rounded"
                         >X</button>
                       </div>
-                          <h2 className='text-2xl font-semibold text-blue-800 mb-5'>Enroll Form</h2>
+                          <h2 className='text-2xl font-semibold text-blue-800 mb-5 '>Enroll Form</h2>
                   {/* //enroll from  */}
 
             <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
