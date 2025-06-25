@@ -228,12 +228,12 @@ const urlObj = new URL(url);
                 <AnimatePresence>
                {
                 showModal && (
-                  <div className="fixed inset-0 flex items-center justify-center h-auto bg-black/50 z-50">
+                  <div className="fixed inset-0 flex sm:items-center items-end justify-center h-auto bg-black/50 z-50">
                     
-                    <motion.div className='bg-white rounded-md md:w-96 w-72 shadow-orange-200  md:p-12 p-6 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
-                        initial={{ scale: 0.8, opacity: 0 }}
-                        animate={{ scale: 1, opacity: 1 }}
-                        exit={{ scale: 0.5, opacity: 0 }}
+                    <motion.div className='bg-white rounded-md md:w-96 w-96 shadow-orange-200  md:p-12 p-6 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
+                        initial={{ y: "100%", opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        exit={{ y: "100%", opacity: 0 }}
                         transition={{ duration: 0.3 }}
                     >
                       <div className='flex justify-end '>
