@@ -2,8 +2,6 @@ import { Routes, Route } from 'react-router-dom';
 import './index.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-
-
 import Header from './Components/Header';
 import Hero from './Components/Hero';
 import Companies from './Components/Companies';

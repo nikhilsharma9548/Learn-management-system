@@ -9,6 +9,7 @@ import {useUser} from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
+import { courses } from '../assets/assets';
 import { addCourse, removeCourse } from '../App/enrollSlice';
 import YouTube from 'react-youtube';
 // import { useNavigate } from 'react-router-dom';
@@ -18,28 +19,72 @@ const CourseDetails = () => {
 
   //Add courses in Myenrollments
   const dispatch = useDispatch();
-  const enrolledCourses = useSelector(state => state.enroll.enrolledCourses);
   const [courseData, setCourseData] = useState(null) 
-
-  //  console.log("✅ enrolledCourses:", enrolledCourses);
-  //  console.log("✅ courseData:", courseData);
-
-
+  const enrolledCourses = useSelector(state => state.enroll.enrolledCourses);
   const isEnrolled = enrolledCourses.some(c => c.id === courseData?.id);
 
+//payment gitway
 
+   const [showModal, setShowModal] = useState(false)
 
-  const handleEnroll = () => {
-      if(!isEnrolled){
-        console.log("📦 Dispatching course:", courseData);
-        dispatch(addCourse(courseData));
+  const [formData, setFormData] = useState({
+    fname: "",
+    mobile: "",
+    Price: "",
+    // totalPrice:parseInt(getTotal().totalPrice) * 100,
+  });
+
+    const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const shipping_address = {
+      first_name: formData.fname,
+      phone_number: formData.mobile,
+      date: new Date().toLocaleString("en-US", {
+        month: "short",
+        day: "2-digit",
+        year: "numeric",
+      }),
+    };
+
+    let options = {
+      key:import.meta.env.VITE_RAZORPAY_KEY,
+      key_secret: "",
+      amount: parseInt(courseData.price) * 100,
+      currency: "INR",
+      name: "@Padho Likho",
+      description: `${courseData.title}`,
+      handler: function (response) {
+        const paymentId = response.razorpay_payment_id;
+        console.log("paymant id", paymentId, shipping_address);
+        if(!isEnrolled){
+          dispatch(addCourse(courseData));
+         toast.success("Enrolled Succesfully ✅");
+        navigate('/enrollments')
         // dispatch(removeCourse(courseData));
       }
+      
+        setShowModal({
+          fname: "",
+          fEmail:"",
+          mobile: "",
+        });
+      },
+      theme: {
+        color: "#07a291db",
+      },
+    };
+    let pay = new window.Razorpay(options);
+    pay.open();
+
+   
   };
- 
      // show to a form 
-  const [showModal, setShowModal] = useState(false);
-  const {isSignedIn, user } = useUser();
+    const {isSignedIn, user } = useUser();
 
   const handleEnrollClick = () => {
         if (!isSignedIn) {
@@ -51,22 +96,14 @@ const CourseDetails = () => {
 
   const handleClose = () => {
     setShowModal(false);
-  };
-
- const handleSubmit = (e) => {
-  e.preventDefault();
-  toast.success("Enrolled Succesfully ✅");
-  navigate('/enrollments')
-};
-
-  
+  };  
   // const navigate = useNavigate();
   const {id} = useParams()
  
   const {allCourses, navigate} = useContext(AppContext);
-  // const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
   const [showSecondDiv, setShowSecondDiv] = useState(); 
   const [playerData, setplayerData] = useState(null);
+
 //featcing the data
   const fetchCourseData = async () =>{
   const findCourse = allCourses.find(course => course.id === id)
@@ -75,7 +112,6 @@ const CourseDetails = () => {
 
   useEffect(() => {
   fetchCourseData()
-  // console.log("✅ Course Data:", courseData);
 }, [id]);
 
 //you-tube video fetching 
@@ -97,9 +133,7 @@ const urlObj = new URL(url);
   return courseData ? ( 
     <>
     <div className='pb-32 flex lg:flex-row flex-col-reverse gap-10  relative item-start justify-between md:px-36 px-8 md:pt-20 mt-20  pt-20 text-left  bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]'>
-
-        {/* <div className='absolute top-0 left-0 w-full'></div> */}
-        
+    
       {/* left column */}
       <div className='max-w-xl z-10 text-gray-600'>
         <h1 className='font-semibold pb-2 text-4xl text-gray-800'>{courseData.title}</h1>
@@ -129,9 +163,8 @@ const urlObj = new URL(url);
                   scrollTo(0,0);
                     setplayerData({
                     videoId: getYouTubeVideoId(courseData.lectureUrl)
-    });
-
-                }}
+                       });  
+                      }}
                 >preview</p>
             </div>
           )}
@@ -144,11 +177,9 @@ const urlObj = new URL(url);
         </div>
       </div>
 
-       
       {/* right column */}
 
       <div className='flex flex-col  h-[720px] shadow-2xl shadow-gray-500 md:min-w-md w-full max-w-sm  bg-white relative bottom-5'>
-        
             <div>
                 {
                 playerData ? 
@@ -168,7 +199,7 @@ const urlObj = new URL(url);
               
             </div>
 
-                <h1 className=' flex item-center text-4xl font-semibold px-14 '>{courseData.price}</h1>
+                <h1 className=' flex item-center text-4xl font-semibold px-14 '>₹{courseData.price}</h1>
                 
             <div className=' bg-white flex font-medium text-xs xl:text-base  px-2  z-10 items-center gap-3 py-5 text-gray-600 shadow-gray-400'>
               <p className=''>{courseData.stars.slice(0,1)}</p>
@@ -215,14 +246,17 @@ const urlObj = new URL(url);
                       </div>
                           <h2 className='text-2xl font-semibold text-blue-800 mb-5'>Enroll Form</h2>
                   {/* //enroll from  */}
+
             <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
-                    <input type="text" placeholder="Enter the student Name" className="border p-2 rounded bg-white " required />
-                       <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white"  required />
-                       <input type="text" placeholder="Enter the student Phone" className="border p-2 rounded bg-white" required />
+                    <input type="text" placeholder="Enter the student Name" className="border p-2 rounded bg-white " required  onChange={handleChange}/>
+                       <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white"  required onChange={handleChange}/>
+                       <input type="text" placeholder="Enter the student Phone" className="border p-2 rounded bg-white" required onChange={handleChange}/>
                           <div className="flex justify-center mt-5">
                              
                                   <button 
-                                    onClick={ handleEnroll}
+                                    // onClick={()=>{
+                                    //    handleEnroll();
+                                    // }}
                                     type="submit"
                                     className="bg-blue-600 text-white rounded cursor-pointer
                                      hover:bg-blue-800 duration-500 py-1 px-4 "
