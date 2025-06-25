@@ -54,7 +54,7 @@ const CourseDetails = () => {
     let options = {
       key:import.meta.env.VITE_RAZORPAY_KEY,
       key_secret: "",
-      amount: parseInt(courseData.price) * 100,
+      amount: parseInt((courseData.price - courseData.discount * courseData.price / 100).toFixed(2)) * 100,
       currency: "INR",
       name: "@Padho Likho",
       description: `${courseData.title}`,
@@ -129,6 +129,8 @@ const urlObj = new URL(url);
   return urlObj.searchParams.get("v");
 };  
 
+//discount Calculate
+ 
 
   return courseData ? ( 
     <>
@@ -193,24 +195,23 @@ const urlObj = new URL(url);
 
             <div className='flex  items-center gap-2 p-3  z-10 bg-white'>
                 <p className='w-3.5 text-red-500 '><FaRegClock /></p>
-
-                 <p className='text-red-500 md:text-base text-xs'><span className='font-medium '>6 days</span> left at this price!</p>
-                
-              
+                <p className='text-red-500 md:text-base text-xs'><span className='font-medium '>6 days</span> left at this price!</p>   
             </div>
-
-                <h1 className=' flex item-center text-4xl font-semibold px-14 '>₹{courseData.price}</h1>
+              
+            <div className='flex items-center pt-2 gap-3 px-5'>
+              <p className=' flex item-center md:text-3xl text-2xl font-semibold  '>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</p>
+              <p className='md:text-2xl text-gray-700 font-semibold line-through'>₹{courseData.price}</p>
+              <p className='md:text-lg text-gray-700 '>{courseData.discount}% off</p>
+            </div>
                 
             <div className=' bg-white flex font-medium text-xs xl:text-base  px-2  z-10 items-center gap-3 py-5 text-gray-600 shadow-gray-400'>
               <p className=''>{courseData.stars.slice(0,1)}</p>
               <p>{courseData.rating}</p>|
               <p className='flex  items-center gap-1 '><FaRegClock />{courseData.duration}</p>|
               <p className='flex gap-1 items-center'><HiOutlineBookOpen /> One short</p>
-              
-            
             </div>
 
-              <div className='flex flex-col gap-2 px-7 bg-white z-10'>
+            <div className='flex flex-col gap-2 px-7 bg-white z-10'>
                  <button
                     onClick={() =>{
                       handleEnrollClick();
@@ -227,9 +228,9 @@ const urlObj = new URL(url);
                 <AnimatePresence>
                {
                 showModal && (
-                  <div className="fixed inset-0 flex items-center  justify-center h-auto bg-black/50 z-50">
+                  <div className="fixed inset-0 flex items-center justify-center h-auto bg-black/50 z-50">
                     
-                    <motion.div className='bg-white rounded-md md:w-96 w-72  md:p-12 p-6 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
+                    <motion.div className='bg-white rounded-md md:w-96 w-72 shadow-orange-200  md:p-12 p-6 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
                         initial={{ scale: 0.8, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         exit={{ scale: 0.5, opacity: 0 }}
@@ -251,6 +252,10 @@ const urlObj = new URL(url);
                     <input type="text" placeholder="Enter the student Name" className="border p-2 rounded bg-white " required  onChange={handleChange}/>
                        <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white"  required onChange={handleChange}/>
                        <input type="text" placeholder="Enter the student Phone" className="border p-2 rounded bg-white" required onChange={handleChange}/>
+                        <div className='flex items-center justify-between gap-5'>
+                        <p className='font-serif text-xl '>Total Amount:<span className='text-3xl pl-5'>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</span> <br />(One-Time Payment)</p>
+                        {/* <p className='font-bold'>₹{courseData.price}</p> */}
+                        </div>
                           <div className="flex justify-center mt-5">
                              
                                   <button 
@@ -259,7 +264,7 @@ const urlObj = new URL(url);
                                     // }}
                                     type="submit"
                                     className="bg-blue-600 text-white rounded cursor-pointer
-                                     hover:bg-blue-800 duration-500 py-1 px-4 "
+                                     hover:bg-blue-800 duration-500 py-2.5 px-6 "
                                   >
                                     Enroll  
                                   </button>
