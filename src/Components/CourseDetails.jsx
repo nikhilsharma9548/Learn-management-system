@@ -292,7 +292,7 @@ const urlObj = new URL(url);
     </div>
     </> 
     
-  ):<Loading />
+  ) : <Loading />
 }
 
 

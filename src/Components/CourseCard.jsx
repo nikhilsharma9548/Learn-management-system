@@ -31,7 +31,7 @@ const CourseCard = () => {
             <h2 className='text-gray-800/80 text-sm'>{course.educator}</h2>
            <div className=' justify-between items-center mt-3'>
               <p className='text-sm'>{course.stars}</p>
-              <p className='pl-2'>{course.price}</p>
+              <p className='pl-2'>₹{course.price}</p>
            </div>
             </div>
           </Link>
