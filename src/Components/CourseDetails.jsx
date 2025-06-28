@@ -247,8 +247,8 @@ const urlObj = new URL(url);
                       </div>
                           <h2 className='text-2xl font-semibold text-blue-800 mb-3 '>Enroll Form</h2>
                           <p className='mb-3 text-gray-600 text-lg'>Please fill all details</p>
-                  {/* //enroll from  */}
 
+                  {/* //enroll from  */}
             <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5 max-sm:border-2 border-gray-600 shadow-black p-5 rounded-lg">
                     <input type="text" placeholder="Enter the student Name" className="border p-2 rounded bg-white " required  onChange={handleChange}/>
                        <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white"  required onChange={handleChange}/>
