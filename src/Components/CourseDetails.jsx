@@ -254,7 +254,7 @@ const urlObj = new URL(url);
                        <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white"  required onChange={handleChange}/>
                        <input type="text" placeholder="Enter the student Phone" className="border p-2 rounded bg-white" required onChange={handleChange}/>
                         <div className='flex items-center justify-between gap-5'>
-                        <p className='text-gray-950 text-xl '>Total Amount:<span className='text-2xl pl-5'>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</span> <br />(One-Time Payment)</p>
+                        <p className='text-gray-950 text-xl '>Total Amount :<span className='text-2xl pl-5 sm:pl-24'>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</span> <br />(One-Time Payment)</p>
                         {/* <p className='font-bold'>₹{courseData.price}</p> */}
                         </div>
                           <div className="flex justify-center mt-5">
