@@ -230,12 +230,13 @@ const urlObj = new URL(url);
                 showModal && (
                   <div className="fixed inset-0 flex sm:items-center items-end  justify-center h-auto bg-black/50 z-50">
                     
-                    <motion.div className='bg-white rounded-md sm:w-96 w-full  shadow-orange-200 sm:p-10 p-14 h-auto bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
+                    <motion.div className='bg-white rounded-md sm:w-96 w-full  shadow-orange-200 sm:p-5 p-14 h-auto
+                     bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
                         initial={{ y: "100%", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
                         exit={{ y: "100%", opacity: 0 }}
                         transition={{ duration: 0.3 }}
-                    ><div className='flex justify-end relative md:bottom-6 bottom-10 md:left-6 left-10'>
+                    ><div className='flex justify-end relative md:bottom-4 bottom-10 md:left-4 left-10'>
                         
                         <button 
                               type="button"
@@ -244,15 +245,16 @@ const urlObj = new URL(url);
                               text-black py-0 px-1.5 font-semibold rounded"
                         >X</button>
                       </div>
-                          <h2 className='text-2xl font-semibold text-blue-800 mb-5 '>Enroll Form</h2>
+                          <h2 className='text-2xl font-semibold text-blue-800 mb-3 '>Enroll Form</h2>
+                          <p className='mb-3 text-gray-600 text-lg'>Please fill all details</p>
                   {/* //enroll from  */}
 
-            <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5">
+            <form onSubmit={handleSubmit} className="flex w-full flex-col gap-5 max-sm:border-2 border-gray-600 shadow-black p-5 rounded-lg">
                     <input type="text" placeholder="Enter the student Name" className="border p-2 rounded bg-white " required  onChange={handleChange}/>
                        <input type="email" placeholder="Enter the student Email" className="border p-2 rounded bg-white"  required onChange={handleChange}/>
                        <input type="text" placeholder="Enter the student Phone" className="border p-2 rounded bg-white" required onChange={handleChange}/>
                         <div className='flex items-center justify-between gap-5'>
-                        <p className='font-serif text-xl '>Total Amount:<span className='text-3xl pl-5'>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</span> <br />(One-Time Payment)</p>
+                        <p className='text-gray-950 text-xl '>Total Amount:<span className='text-2xl pl-5'>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</span> <br />(One-Time Payment)</p>
                         {/* <p className='font-bold'>₹{courseData.price}</p> */}
                         </div>
                           <div className="flex justify-center mt-5">
