@@ -14,10 +14,11 @@ import Player from './Components/Player';
 import MyEnrollments from './Components/MyEnrollments';
 import Loading from './Components/Loading';
 import { useSelector } from 'react-redux';
+import Bot from './ChatBot/Bot';
 function App() {
   return (
     <div className="overflow-hidden text-default  min-h-screen ">
-
+    
     < Header />
       <Routes>
           <Route 
@@ -39,7 +40,6 @@ function App() {
           <Route path='/loading/:path' element = {<Loading />} />
           
       </Routes>
-      
     <Footer />
 
       {/* toaster  */}

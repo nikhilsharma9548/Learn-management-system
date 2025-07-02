@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { assets } from '../assets/assets';
 import {Typewriter} from 'react-simple-typewriter';
 import { FaArrowRightLong } from "react-icons/fa6";
 import Welcome from './Welcome';
+import Bot from '../ChatBot/Bot';
 
 
 const Hero = () => {
+  
   return (
     <>
     <div id='Home' className='  pt-36 w-full bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] flex items-center  justify-center overflow-hidden'> 
@@ -13,16 +15,9 @@ const Hero = () => {
            <div className='h-[40vw] w-[60vw]  flex flex-col items-center justify-center'>     
             <h1 className='text-3xl pt-5  md:text-2xl xl:text-5xl font-bold text-center'>
               <Typewriter 
-              words = {['Your Journey to Knowledge Starts Here.']}
-              // loop =  {false}
-              cursor
-              cursorStyle =""
-              // deleteStyle = {100}
-              // deleteSpeed = {50}
-              // delaySpeed = {1000}
+              words = {['Your Journey to Knowledge Starts Here.']}           
               /> 
             </h1>      
-              {/* <h1 className='text-3xl pt-5  md:text-2xl xl:text-5xl font-bold text-center'>Welcome to Our <span className='text-blue-600 text-4xl md:text-2.5xl  lg:text-4xl xl:text-5xl'>Learning Management System</span></h1> */}
               <p className='mt-4 text-center'>Your one-stop solution for online learning and education management.</p>
               <div className='flex items-center md:gap-3 gap-1 justify-between '>
                 <button className='p-2  max-sm:text-xs flex items-center border-gray-700 border justify-center rounded-full md:mt-10 mt-4 hover:cursor-pointer font-bold bg-blue-300  '>Learn More</button>
