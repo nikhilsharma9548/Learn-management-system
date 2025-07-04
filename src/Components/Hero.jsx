@@ -3,8 +3,6 @@ import { assets } from '../assets/assets';
 import {Typewriter} from 'react-simple-typewriter';
 import { FaArrowRightLong } from "react-icons/fa6";
 import Welcome from './Welcome';
-import Bot from '../ChatBot/Bot';
-
 
 const Hero = () => {
   
