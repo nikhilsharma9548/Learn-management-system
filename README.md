@@ -1,12 +1,6 @@
-# React + Vite
+<p>LMS (Learning Management System) is a full-featured web application designed to simplify the management and delivery of educational courses. It provides a seamless experience for both students and instructors through a user-friendly interface and robust backend functionalities.</p>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+![image alt](https://github.com/nikhilsharma9548/Learn-management-system/blob/3c742d846eb21c5c821dbd91940f2f3c352e52b9/src/assets/Images/Overview.png)
