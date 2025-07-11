@@ -1,7 +1,6 @@
 import React, { useState } from 'react'
 import { IoChatboxOutline } from "react-icons/io5";
 import { RxCross2 } from "react-icons/rx";
-import { FaRobot } from "react-icons/fa6";
 import Main from './Main';
 import { useContext } from 'react';
 import { AppContext } from '../Context/AppContext';
@@ -20,16 +19,16 @@ const ChatBox = () => {
          
         <div className={` cursor-pointer rounded-full bg-blue-900 transform transition-transform duration-300 ${openChat ? ' rotate-180' : ' rotate-0'}`}>
             {!openChat ? (
-                <p className={`relative p-4 text-2xl text-white z-10 `}>
-                <span className="absolute inline-flex p-4 bottom-3 right-3 rounded-full bg-white animate-ping z-0"></span>    
+                <p className={`relative p-3 text-2xl text-white z-10 `}>
+                <span className="absolute inline-flex p-3 rounded-full bg-white animate-ping "></span>    
                 
-                <FaRobot
+                <IoChatboxOutline
                 className='relative z-0'
                 onClick={()=>{
                 setOpenChat(true);
             }} /></p>
             ) : (
-                <p className='relative z-10 p-4 text-2xl  text-white '><RxCross2 onClick={()=>{
+                <p className='relative z-10 p-3 text-2xl  text-white '><RxCross2 onClick={()=>{
                     handleClose()  
                 }} className=''/></p>
             )}
