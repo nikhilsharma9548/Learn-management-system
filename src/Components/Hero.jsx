@@ -3,11 +3,13 @@ import { assets } from '../assets/assets';
 import {Typewriter} from 'react-simple-typewriter';
 import { FaArrowRightLong } from "react-icons/fa6";
 import Welcome from './Welcome';
+import ChatBox from '../ChatApp/ChatBox';
 
 const Hero = () => {
   
   return (
     <>
+    
     <div id='Home' className='  pt-36 w-full bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] flex items-center  justify-center overflow-hidden'> 
         <div className='flex w-[90vw] h-[90vw] md:w-[80vw] md:h-[30vw]  items-center justify-around  shadow-xl rounded-lg bg-white'>
            <div className='h-[40vw] w-[60vw]  flex flex-col items-center justify-center'>     
@@ -30,7 +32,9 @@ const Hero = () => {
         </div>
         
     </div>
+   <ChatBox />
     <Welcome/>
+    
     </>
   )
 }

@@ -13,11 +13,11 @@ import CourseList from './Components/Course-List';
 import Player from './Components/Player';
 import MyEnrollments from './Components/MyEnrollments';
 import Loading from './Components/Loading';
-import { useSelector } from 'react-redux';
+
 function App() {
   return (
     <div className="overflow-hidden text-default  min-h-screen ">
-    
+     
     < Header />
       <Routes>
           <Route 
