@@ -51,7 +51,7 @@ const Main = () => {
                 <div className='flex justify-center items-center'>
                   {loading ? (
                     <div className='flex  '>
-                      <p className='rounded-full p-2 bg-black animate-pulse'></p>
+                      <p className='  p-1.5 bg-gradient-to-l from-blue-600 to-purple-700 animate-spin'></p>
                     </div>
                   ) : (
                     <div>
@@ -75,7 +75,7 @@ const Main = () => {
                      }}
                     onChange={(e) =>setInput(e.target.value)}
              placeholder='Ask Your Question'
-             className='outline-none px-8'/>
+             className='outline-none sm:px-8 px-5'/>
               <p className='px-3 py-1 relative right-1 bg-blue-500 hover:bg-blue-700 duration-300 rounded-full text-white cursor-pointer font-mono font-bold'
               onClick={()=>{
                 if(input.trim() !== ""){

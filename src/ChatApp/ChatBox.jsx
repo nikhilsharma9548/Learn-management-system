@@ -19,7 +19,8 @@ const ChatBox = () => {
          <Main />
          
         <div className={` cursor-pointer rounded-full bg-blue-900 transform transition-transform duration-300 ${openChat ? ' rotate-180' : ' rotate-0'}`}>
-               {!openChat && <span className="absolute inline-flex h-full w-full rounded-full bg-white animate-ping"></span>}
+               {!openChat && <span className="absolute  p-3.5 md:top-3 top-2.5 left-2.5 rounded-full bg-white animate-ping"></span>}
+               
             {!openChat ? (
                 <p className={`relative p-3 text-2xl text-white z-10 `}><FaRobot onClick={()=>{
                 setOpenChat(true);
