@@ -19,7 +19,7 @@ const Main = () => {
       // Top
         <motion.div 
         initial ={{opacity: 0, x: 100}}
-        animate ={{opacity: 1, x:0}}
+        animate ={{opacity: 1, x:10}}
         exit={{opacity:0 , x:100}}
         transition={{duration:0.25}}
         className='h-[460px] w-[330px] rounded-xl bg-gradient-to-t from-white to-cyan-200 shadow-md shadow-blue-500'>
