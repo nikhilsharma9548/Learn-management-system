@@ -19,14 +19,15 @@ const ChatBox = () => {
          <Main />
          
         <div className={` cursor-pointer rounded-full bg-blue-900 transform transition-transform duration-300 ${openChat ? ' rotate-180' : ' rotate-0'}`}>
-               {!openChat && <span className="absolute  p-3.5 md:top-3 top-2.5 left-2.5 rounded-full bg-white animate-ping"></span>}
-               
             {!openChat ? (
-                <p className={`relative p-3 text-2xl text-white z-10 `}><FaRobot onClick={()=>{
+                <p className={`relative p-3 text-2xl text-white z-10 `}>
+                <span className="absolute inline-flex p-3 rounded-full bg-white animate-ping z-0"></span>    
+                
+                <FaRobot
+                className='relative z-0'
+                onClick={()=>{
                 setOpenChat(true);
-            }} />
-               
-            </p>
+            }} /></p>
             ) : (
                 <p className='relative z-10 p-3 text-2xl  text-white '><RxCross2 onClick={()=>{
                     handleClose()  
