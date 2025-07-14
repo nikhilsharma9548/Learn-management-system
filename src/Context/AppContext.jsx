@@ -9,6 +9,7 @@ export const AppContext = createContext();
 
 export const AppContextProvider = (props)=>{
 
+  
     const navigate =useNavigate()
 
     const [allCourses, setallCourses] = useState([])
@@ -42,14 +43,14 @@ export const AppContextProvider = (props)=>{
     const[resultData, setResultData] = useState("");
     const[showResult, setShowresult] = useState(false);
     const[prevPrompt, setPrevPrompt] = useState([]);
-    const[recentPrompt, setRecentPrompt] = useState("");
-      
+      const[recentPrompt, setRecentPrompt] = useState("");
+        //chatbot API
         const delayPara =(index, nextword) =>{
         setTimeout(function () {
             setResultData(prev=>prev+nextword);
         },75*index)
     }
-        // chat-bot function
+
         const onSent = async(prompt) =>{
         setInput("");
         setResultData("");
@@ -87,11 +88,14 @@ export const AppContextProvider = (props)=>{
          }
          setLoading(false)
          setInput("")     
-         console.log("Gemini Response:", result);
-   
+         console.log("Gemini Response:", result);  
     };
     
+          //currency 
+    const currency = import.meta.env.VITE_CURRENCY
+ 
      const value = {
+            currency,
             input,
             setInput,
             onSent,

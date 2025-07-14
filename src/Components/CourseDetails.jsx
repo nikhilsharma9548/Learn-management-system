@@ -100,7 +100,7 @@ const CourseDetails = () => {
   // const navigate = useNavigate();
   const {id} = useParams()
  
-  const {allCourses, navigate} = useContext(AppContext);
+  const {allCourses, navigate, currency} = useContext(AppContext);
   const [showSecondDiv, setShowSecondDiv] = useState(); 
   const [playerData, setplayerData] = useState(null);
 
@@ -199,8 +199,8 @@ const urlObj = new URL(url);
             </div>
               
             <div className='flex items-center pt-2 gap-3 px-5'>
-              <p className=' flex item-center md:text-3xl text-2xl font-semibold  '>₹{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</p>
-              <p className='md:text-2xl text-gray-700 font-semibold line-through'>₹{courseData.price}</p>
+              <p className=' flex item-center md:text-3xl text-2xl font-semibold  '>{currency}{(courseData.price - courseData.discount * courseData.price / 100).toFixed(2)}</p>
+              <p className='md:text-2xl text-gray-700 font-semibold line-through'>{currency}{courseData.price}</p>
               <p className='md:text-lg text-gray-700 '>{courseData.discount}% off</p>
             </div>
                 

@@ -6,12 +6,13 @@ import Loading from './Loading';
 import { RxCross2 } from "react-icons/rx";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { current } from '@reduxjs/toolkit';
 
 const CourseList = () => {
 
   const {input} = useParams()
 
-  const{navigate, allCourses} = useContext(AppContext);
+  const{navigate, allCourses, currency} = useContext(AppContext);
   const [filteredCourses, setFilteredCourses] = useState([]);
   
   useEffect(() => {
@@ -79,7 +80,7 @@ const CourseList = () => {
                 <h2 className='text-gray-800/80 text-sm'>{course.educator}</h2>
                <div className=' justify-between items-center mt-3'>
                   <p className='text-sm'>{course.stars}</p>
-                  <p className='pl-2'>{course.price}</p>
+                  <p className='pl-2'>{currency}{course.price}</p>
                </div>
                 </div>
               </Link>

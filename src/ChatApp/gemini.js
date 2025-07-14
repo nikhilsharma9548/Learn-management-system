@@ -10,6 +10,7 @@ const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-
       {
         role: "user",
         parts: [{  text: `
+
           our courses:
       ${JSON.stringify(courses, null, 2)}
           " my owner is "nikhil sharma" 
