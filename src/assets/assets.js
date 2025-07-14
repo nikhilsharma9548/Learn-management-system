@@ -111,7 +111,7 @@ export const courses = [
     "id": "6ab1c2d3e4f5a697b8c9d0e2",
     "title": "API handling in React",
     "courseDescription": "<h2>Learn to Handle APIs in React</h2><p>APIs (Application Programming Interfaces) are essential for modern web applications. In this course, you will learn how to handle APIs in React, including fetching data, handling responses, and integrating APIs into your React applications.</p><p>This course covers topics such as using the Fetch API, Axios for HTTP requests, and managing API responses in React components. By the end of this course, you will be able to build dynamic applications that interact with external data sources.</p><ul><li>Understand how to make API requests</li><li>Learn how to handle API responses</li><li>Integrate APIs into your React applications</li></ul>",
-    "educator":"Coude Aur Chai",        
+    "educator":"Code Aur Chai",        
     "price":12,
     "discount": 5,
     "stars": "⭐⭐⭐⭐",
