@@ -10,7 +10,7 @@ const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-
       {
         role: "user",
         parts: [{  text: `
-
+         "What is the price of the HTML course in Indian Rupees (₹)? please don’t convert it from USD."
           our courses:
       ${JSON.stringify(courses, null, 2)}
           " my owner is "nikhil sharma" 
