@@ -10,8 +10,8 @@ const ChatBox = () => {
 
    
    const handleClose = () =>{
-    setOpenChat(false)
-   }
+    setOpenChat(false)                  
+0   }
   return (
     <>
     <div className='fixed bottom-0 gap-3 flex flex-col items-end justify-self-end  md:p-10 p-6  h-auto z-50 '>

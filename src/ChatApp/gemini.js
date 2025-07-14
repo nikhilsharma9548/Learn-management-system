@@ -1,5 +1,5 @@
 const API_KEY = import.meta.env.VITE_GEMINI_API_KEY;
-import { assets } from "../assets/assets";
+import { courses } from "../assets/assets";
 
 
 async function runGemini(prompt) {
@@ -10,7 +10,8 @@ const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-
       {
         role: "user",
         parts: [{  text: `
-          if the is about the courses then answer "our courses details is the below the courses section click and read anythink about my courses "
+          our courses:
+      ${JSON.stringify(courses, null, 2)}
           " my owner is "nikhil sharma" 
           "hello there ! Welcome to Padho Likho ! How can i help you"
           "you are only answered my LMS based questions "

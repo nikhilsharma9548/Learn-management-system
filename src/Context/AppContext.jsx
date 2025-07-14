@@ -9,8 +9,6 @@ export const AppContext = createContext();
 
 export const AppContextProvider = (props)=>{
 
-    
-
     const navigate =useNavigate()
 
     const [allCourses, setallCourses] = useState([])
@@ -44,14 +42,14 @@ export const AppContextProvider = (props)=>{
     const[resultData, setResultData] = useState("");
     const[showResult, setShowresult] = useState(false);
     const[prevPrompt, setPrevPrompt] = useState([]);
-      const[recentPrompt, setRecentPrompt] = useState("");
-        //chatbot API
+    const[recentPrompt, setRecentPrompt] = useState("");
+      
         const delayPara =(index, nextword) =>{
         setTimeout(function () {
             setResultData(prev=>prev+nextword);
         },75*index)
     }
-
+        // chat-bot function
         const onSent = async(prompt) =>{
         setInput("");
         setResultData("");

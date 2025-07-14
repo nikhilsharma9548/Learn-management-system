@@ -230,7 +230,7 @@ const urlObj = new URL(url);
                 showModal && (
                   <div className="fixed inset-0 flex sm:items-center items-end  justify-center h-auto bg-black/50 z-50">
                     
-                    <motion.div className='bg-white rounded-md sm:w-96 w-full  shadow-orange-200 sm:p-5 p-14 h-auto
+                    <motion.div className='bg-white rounded-md sm:w-96 w-full  shadow-orange-200 md:p-5 p-14 h-auto
                      bg-gradient-to-r from-[#c3cfda]  to-[#95a8dd]'
                         initial={{ y: "100%", opacity: 0 }}
                         animate={{ y: 0, opacity: 1 }}
