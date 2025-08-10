@@ -55,9 +55,14 @@ function App() {
         autoClose={1000}     // 3 seconds mein band hoga
         hideProgressBar={true}
         newestOnTop
-        closeOnClick
+        closeOnClick= {false}
         pauseOnHover
         draggable
+        theme='colored'
+        style={{
+          background: "bg-[#95a8dd]",
+          fontSize: "14px"
+        }}
       />
     </div>
   );
