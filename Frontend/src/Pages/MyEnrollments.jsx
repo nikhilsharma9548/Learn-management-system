@@ -13,10 +13,10 @@ const MyEnrollments = () => {
   // const {navigate} = useContext(AppContext);
   const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
     // console.log("Enrolled Courses", enrolledCourses);
-  const handleUnenroll = (courseId) => {
-    dispatch(removeCourse(courseId));
-    toast.warn('course Unenroll')
-  };
+  // const handleUnenroll = (courseId) => {
+  //   dispatch(removeCourse(courseId));
+  //   toast.warn('course Unenroll')
+  // };
 
   return (
     <>
@@ -44,15 +44,12 @@ const MyEnrollments = () => {
           <thead className='text-gray-900 border-b border-gray-700 text-base text-left max-sm:hidden'>
             <tr>
               <th className='px-4 py-3 font-semibold truncate'>Course</th>
-              <th className='px-4 py-3 font-semibold truncate'>Duration</th>
-              {/* <th className='px-4 py-3 font-semibold truncate'>OnGoing</th> */}
-              
-
+              <th className='px-4 py-3 font-semibold truncate'>Duration</th>              
             </tr>
           </thead>
+
           <tbody className='text-gray-900 sm:text-base text-xs'>
             {enrolledCourses.map((course, index) => (
-              // console.log("COURSE ID", course._id);
               <tr key={course.id ||index} className='border-b border-gray-500/80 max-sm:flex max-sm:flex-col '>
                 <td className='md:px-4 px-0 pl-0 md:pl-4 md:py-3 py-0 max-sm:flex-col'>
                   <img
@@ -78,12 +75,12 @@ const MyEnrollments = () => {
                   >
                     Watch
                   </button>
-                  <button
+                  {/* <button
                     className='sm:px-3 px-1 bg-amber-700 rounded sm:top-20 text-white  sm:py-2 relative sm:bottom-0 bottom-4 max-sm:right-2 right-5 cursor-pointer'
                     onClick={()=>{
                       handleUnenroll(course.id);
                     }}
-                  >Unenroll</button>
+                  >Unenroll</button> */}
                  </div>
                 </td>
               </tr>
