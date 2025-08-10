@@ -20,6 +20,8 @@ import Tcs from './Images/TCS.png';
 import Wipro from './Images/Wipro.png';
 import Adobe from './Images/adobe.png';
 import Student from './Images/student-1.jpg';
+import user from './Images/User.png'
+import banner from './Images/padho-3.svg';
 
 export const assets = {
     amazon,
@@ -42,7 +44,9 @@ export const assets = {
     profile_img_1,
     profile_img_2,
     profile_img_3,
-    Adobe
+    Adobe,
+    user,
+    banner
     
 };
 

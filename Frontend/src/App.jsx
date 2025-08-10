@@ -5,29 +5,34 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './Components/Header';
 import Hero from './Components/Hero';
 import Companies from './Components/Companies';
-import CourseDetails from './Components/CourseDetails';
+import CourseDetails from './pages/CourseDetails';
 import CourseCard from './Components/CourseCard';
 import Testimonials from './Components/Testimonials';
 import Footer from './Components/Footer';
-import CourseList from './Components/Course-List';
-import Player from './Components/Player';
-import MyEnrollments from './Components/MyEnrollments';
+import CourseList from './Pages/Course-List';
+import Player from './Pages/Player';
+import MyEnrollments from './Pages/MyEnrollments';
 import Loading from './Components/Loading';
+import Login from './Pages/SignUpForm/Login';
+import ResetPassword from './Pages/SignUpForm/ResetPassword';
+import UserDetails from './Pages/SignUpForm/UserDetails';
 
 function App() {
   return (
     <div className="overflow-hidden text-default  min-h-screen ">
-     
-    < Header />
+
+   
       <Routes>
           <Route 
             path="/" 
             element={
               <>
+               < Header />
                 <Hero />
                 <Companies />
                 <CourseCard />
                 <Testimonials />
+                <Footer />
               </>
             }/>
     
@@ -37,14 +42,16 @@ function App() {
           <Route path='/enrollments' element={<MyEnrollments />}/>
           <Route path="/player/:id" element={<Player />} />
           <Route path='/loading/:path' element = {<Loading />} />
+          <Route path='/login' element = {<Login />}/>
+          <Route path='/reset-password' element = {<ResetPassword />} />
           
       </Routes>
-    <Footer />
+            <UserDetails />
 
       {/* toaster  */}
 
        <ToastContainer
-        position="top-right"  // ya 'bottom-left', 'bottom-center' etc.
+        position="bottom-center"  // ya 'bottom-left', 'bottom-center' etc.
         autoClose={1000}     // 3 seconds mein band hoga
         hideProgressBar={true}
         newestOnTop

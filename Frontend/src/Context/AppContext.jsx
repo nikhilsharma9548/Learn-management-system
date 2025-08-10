@@ -2,6 +2,8 @@ import{ crateContext, createContext, use, useEffect, useState } from "react";
 import { courses } from "../assets/assets";
 import runGemini from "../ChatApp/gemini";
 import { useNavigate } from "react-router-dom";
+import {toast} from 'react-toastify';
+import axios from "axios";
 
 export const AppContext = createContext();  
 
@@ -10,7 +12,7 @@ export const AppContext = createContext();
 export const AppContextProvider = (props)=>{
 
   
-    const navigate =useNavigate()
+    const navigate = useNavigate()
 
     const [allCourses, setallCourses] = useState([])
 
@@ -43,7 +45,8 @@ export const AppContextProvider = (props)=>{
     const[resultData, setResultData] = useState("");
     const[showResult, setShowresult] = useState(false);
     const[prevPrompt, setPrevPrompt] = useState([]);
-      const[recentPrompt, setRecentPrompt] = useState("");
+    const[recentPrompt, setRecentPrompt] = useState("");
+
         //chatbot API
         const delayPara =(index, nextword) =>{
         setTimeout(function () {
@@ -93,6 +96,52 @@ export const AppContextProvider = (props)=>{
     
           //currency 
     const currency = import.meta.env.VITE_CURRENCY
+
+    //User Sign Up backend Call
+    
+      //Login State
+      const [isLoggedIn, setIsLoggedIn] = useState(false);
+      const [userData, setUserData] = useState(false);
+      const [isUser, setIsUser] = useState(false);
+      const [openUser, setOpenUser] = useState(false);
+
+
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+     axios.defaults.withCredentials = true;
+
+    const getAuthState = async() =>{
+        try {
+            
+            const {data} = await axios.get(backendUrl + '/api/auth/is-auth')
+
+            if(data.success){
+                setIsLoggedIn(true)
+                setUserData()
+                setLoading(false)
+            }
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+    const getUserData = async() =>{
+
+        try {
+
+            const {data} = await axios.get(backendUrl + '/api/user/data')
+            data.success ? setUserData(data.userData) : toast.error(data.message) 
+            
+        } catch (error) {
+            toast.error(error.message)
+        }
+    }
+
+     useEffect(() =>{
+        getAuthState();
+    },[])
+    const [blur, setBlur] = useState(false);
+
+    
  
      const value = {
             currency,
@@ -108,6 +157,7 @@ export const AppContextProvider = (props)=>{
             setRecentPrompt,
             recentPrompt,
             loading,
+            setLoading,
             openChat,
             setOpenChat,
             allCourses,
@@ -115,6 +165,19 @@ export const AppContextProvider = (props)=>{
             enrolledCourses,
             setEnrolledCourses,
            fetchEnrolledCourses,
+           getAuthState,
+           userData,
+           isLoggedIn,
+           setIsLoggedIn,
+           setUserData,
+           getUserData,
+           isUser,
+           setIsUser,
+           backendUrl,
+           openUser,
+           setOpenUser,
+           blur,
+           setBlur
      }
 
    

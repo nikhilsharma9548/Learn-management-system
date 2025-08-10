@@ -75,7 +75,7 @@ const Main = () => {
                      }}
                     onChange={(e) =>setInput(e.target.value)}
              placeholder='Ask Your Question'
-             className='outline-none sm:px-8 py-2 px-4'/>
+             className='outline-none sm:px-6 py-2 px-4'/>
               <p className='px-3 py-1 relative right-1 bg-blue-500 hover:bg-blue-700 duration-300 rounded-full text-white cursor-pointer font-mono font-bold'
               onClick={()=>{
                 if(input.trim() !== ""){
