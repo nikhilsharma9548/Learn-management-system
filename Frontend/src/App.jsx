@@ -54,9 +54,8 @@ function App() {
         position="bottom-center"  // ya 'bottom-left', 'bottom-center' etc.
         autoClose={1000}     // 3 seconds mein band hoga
         hideProgressBar={true}
-        newestOnTop = {true}
+        newestOnTop
         closeOnClick= {false}
-        rtl={false}
         pauseOnHover
         draggable
         theme='light'
