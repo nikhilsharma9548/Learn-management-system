@@ -58,7 +58,7 @@ function App() {
         closeOnClick= {false}
         pauseOnHover
         draggable
-        theme='colored'
+        // theme='colored'
         style={{
           background: "bg-[#95a8dd]",
           fontSize: "14px"
