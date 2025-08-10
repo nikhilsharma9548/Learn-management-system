@@ -107,6 +107,7 @@ export const AppContextProvider = (props)=>{
 
 
     const backendUrl = import.meta.env.VITE_BACKEND_URL
+    
      axios.defaults.withCredentials = true;
 
     const getAuthState = async() =>{
