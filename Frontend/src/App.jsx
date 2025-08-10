@@ -5,7 +5,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import Header from './Components/Header';
 import Hero from './Components/Hero';
 import Companies from './Components/Companies';
-import CourseDetails from './pages/CourseDetails';
+import CourseDetails from './Pages/CourseDetails';
 import CourseCard from './Components/CourseCard';
 import Testimonials from './Components/Testimonials';
 import Footer from './Components/Footer';
