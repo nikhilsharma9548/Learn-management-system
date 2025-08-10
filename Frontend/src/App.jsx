@@ -67,12 +67,12 @@ function App() {
           fontSize: "16px",
           borderRadius: "12px",
         }}
-        toastStyle={{
-          backgroundColor: "#444", // toast box background
-          color: "#fff",           // toast text
-          borderRadius: "8px",
-          padding: "15px",
-        }}
+        // toastStyle={{
+        //   backgroundColor: "#444", // toast box background
+        //   color: "#fff",           // toast text
+        //   borderRadius: "8px",
+        //   padding: "15px",
+        // }}
       />
     </div>
   );
