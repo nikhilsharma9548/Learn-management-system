@@ -50,19 +50,28 @@ function App() {
 
       {/* toaster  */}
 
-       <ToastContainer
-        position="bottom-center"  // ya 'bottom-left', 'bottom-center' etc.
-        autoClose={1000}     // 3 seconds mein band hoga
-        hideProgressBar={true}
-        newestOnTop
-        closeOnClick= {false}
-        pauseOnHover
+        <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={true}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
         draggable
-        theme='light'
+        pauseOnHover
+        theme="dark"
         style={{
-          fontSize: "10px",
-          fontWeight: "bold",
+          backgroundColor: "#222", // container background
+          color: "#fff",           // text color
+          fontSize: "16px",
+          borderRadius: "12px",
+        }}
+        toastStyle={{
+          backgroundColor: "#444", // toast box background
+          color: "#fff",           // toast text
           borderRadius: "8px",
+          padding: "15px",
         }}
       />
     </div>
