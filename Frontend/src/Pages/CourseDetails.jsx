@@ -5,7 +5,6 @@ import { IoIosArrowDropup } from "react-icons/io";
 import { useParams } from 'react-router-dom';
 import { FaRegClock } from "react-icons/fa";
 import Loading from '../Components/Loading';
-import {useUser} from '@clerk/clerk-react';
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';

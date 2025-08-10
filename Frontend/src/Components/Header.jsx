@@ -1,7 +1,6 @@
 import React, { useContext } from 'react'
 import { AppContext } from '../Context/AppContext';
 import { assets } from '../assets/assets';
-import UserDetails from '../Pages/SignUpForm/UserDetails';
 
 
 const Header = () => { 

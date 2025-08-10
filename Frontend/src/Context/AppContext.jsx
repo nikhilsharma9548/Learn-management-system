@@ -1,4 +1,4 @@
-import{ crateContext, createContext, use, useEffect, useState } from "react";
+import{createContext,useEffect, useState } from "react";
 import { courses } from "../assets/assets";
 import runGemini from "../ChatApp/gemini";
 import { useNavigate } from "react-router-dom";

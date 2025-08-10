@@ -5,7 +5,6 @@ import SearchBar from '../Components/SearchBar';
 import { RxCross2 } from "react-icons/rx";
 import { Link } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { current } from '@reduxjs/toolkit';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
