@@ -55,16 +55,15 @@ const MyEnrollments = () => {
                   <img
                     src={course.image || "/default-image.png"}
                     alt={course.title}
-                    className='sm:w-72 flex'
-                  />
+                    className='sm:w-72 flex'/>
                   <div className='py-2 max-md:hidden'>
                     {course.title}
                   </div>
                 </td>
-                <td className='sm:text-base text-sm relative top-4 sm:top-0 sm:left-0 left-0.5 max-sm:py-3'>
+                <td className='sm:text-base text-sm relative top-4 sm:top-0 sm:left-0 left-2.5 max-sm:py-3'>
                   {course.duration || "N/A"}
                 </td>
-                <td className='sm:py-3 py-0 max-sm:text-right flex items-center  justify-end'>
+                <td className='sm:py-3 py-0 max-sm:text-right flex items-center  max-sm:justify-end'>
                  <div className='flex justify-evenly gap-0 relative sm:gap-10 text-xs sm:text-base'>
                    <button
                     className='sm:px-3 px-2 sm:py-2 py-1 relative sm:bottom-0 sm:top-20 bottom-4 max-sm:right-5 cursor-pointer text-white rounded bg-blue-600 hover:bg-blue-700'
@@ -75,12 +74,7 @@ const MyEnrollments = () => {
                   >
                     Watch
                   </button>
-                  {/* <button
-                    className='sm:px-3 px-1 bg-amber-700 rounded sm:top-20 text-white  sm:py-2 relative sm:bottom-0 bottom-4 max-sm:right-2 right-5 cursor-pointer'
-                    onClick={()=>{
-                      handleUnenroll(course.id);
-                    }}
-                  >Unenroll</button> */}
+
                  </div>
                 </td>
               </tr>
