@@ -60,7 +60,7 @@ function App() {
         draggable
         theme='light'
         style={{
-          backgroundColor: "#95a8dd",
+          color: "#95a8dd",
           fontSize: "10px",
           fontWeight: "bold",
           borderRadius: "8px",
