@@ -1,6 +1,6 @@
 import { Routes, Route } from 'react-router-dom';
 import './index.css'
-import { ToastContainer } from 'react-toastify';
+import { Flip, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Header from './Components/Header';
 import Hero from './Components/Hero';
@@ -51,19 +51,24 @@ function App() {
       {/* toaster  */}
 
        <ToastContainer
-        position="bottom-center"  // ya 'bottom-left', 'bottom-center' etc.
-        autoClose={1000}     // 3 seconds mein band hoga
+        position="bottom-center" 
+        autoClose={1000}
         hideProgressBar={true}
         newestOnTop
         closeOnClick= {false}
         pauseOnHover
-        draggable
+        draggable 
+        transition={Flip}
         theme='light'
         style={{
           color: "#95a8dd",
-          fontSize: "10px",
-          fontWeight: "bold",
+          fontSize: "14px",
+          fontWeight: "semibild",
           borderRadius: "8px",
+        }}
+        toastStyle={{
+          backgroundColor: "#2152D9",
+          color:"white",
         }}
       />
     </div>
