@@ -100,15 +100,16 @@ export const AppContextProvider = (props)=>{
     //User Sign Up backend Call
     
       //Login State
+
+      
+    const backendUrl = import.meta.env.VITE_BACKEND_URL
+    
+     axios.defaults.withCredentials = true;
+     
       const [isLoggedIn, setIsLoggedIn] = useState(false);
       const [userData, setUserData] = useState(false);
       const [isUser, setIsUser] = useState(false);
       const [openUser, setOpenUser] = useState(false);
-
-
-    const backendUrl = import.meta.env.VITE_BACKEND_URL
-    
-     axios.defaults.withCredentials = true;
 
     const getAuthState = async() =>{
         try {
@@ -117,7 +118,7 @@ export const AppContextProvider = (props)=>{
 
             if(data.success){
                 setIsLoggedIn(true)
-                setUserData()
+                getUserData();
                 setLoading(false)
             }
         } catch (error) {
