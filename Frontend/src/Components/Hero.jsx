@@ -4,7 +4,6 @@ import {Typewriter} from 'react-simple-typewriter';
 import { FaArrowRightLong } from "react-icons/fa6";
 import Welcome from './Welcome';
 import ChatBox from '../ChatApp/ChatBox';
-import UserDetails from '../Pages/SignUpForm/UserDetails';
 
 const Hero = () => {
   
