@@ -1,27 +1,19 @@
 import React, { useContext, useEffect } from 'react';
-import { useDispatch, useSelector } from "react-redux";
+import {useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
-import { removeCourse } from '../App/enrollSlice';
-import { toast } from 'react-toastify';
 import { AppContext } from '../Context/AppContext';
 import Header from '../Components/Header';
 import Footer from '../Components/Footer';
 
 const MyEnrollments = () => {
   const navigate = useNavigate();
-  const dispatch = useDispatch();
-  // const {navigate} = useContext(AppContext);
-  const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
-    // console.log("Enrolled Courses", enrolledCourses);
-  // const handleUnenroll = (courseId) => {
-  //   dispatch(removeCourse(courseId));
-  //   toast.warn('course Unenroll')
-  // };
 
+  const {openUser } = useContext(AppContext);
+  const enrolledCourses = useSelector((state) => state.enroll.enrolledCourses);
   return (
     <>
     <Header />
-    <div className='h-full md:p-32 w-full px-8 py-20 pt-24 bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]'>
+    <div className={`h-full md:p-32 w-full px-8 py-20 pt-24 bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] ${openUser && "  brightness-50"}`}>
       <h1 className='text-2xl font-semibold'>My Enrollments</h1>
 
       {enrolledCourses.length === 0 ? (

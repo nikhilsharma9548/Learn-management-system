@@ -4,7 +4,7 @@ import { assets } from '../assets/assets';
 
 
 const Header = () => { 
-  const {navigate, userData, openUser, setOpenUser, setIsBlur} = useContext(AppContext);
+  const {navigate, userData, openUser, setOpenUser} = useContext(AppContext);
 
   
 
@@ -15,7 +15,9 @@ const Header = () => {
 
   return (
    <>
-    <header className='z-50 flex justify-between shadow-xl bg-[#95a8dd] items-center sm:px-10 px-6 overflow-hidden fixed  left-0 top-0 w-full text-black '> 
+    <header className={`z-50 flex justify-between shadow-xl bg-[#95a8dd] items-center sm:px-10 px-6
+       overflow-hidden fixed  left-0 top-0 w-full text-black ${openUser && "  brightness-50"}`}> 
+       
       <div className='object-cover h-18 w-24 flex items-center justify-center  cursor-pointer pt-10 pb-10'>
         <img src={assets.Padho}
         onClick={()=>

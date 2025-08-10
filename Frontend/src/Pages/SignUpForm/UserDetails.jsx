@@ -9,7 +9,7 @@ import { assets } from '../../assets/assets';
 
 const UserDetails = () => {
 
-    const{openUser,setOpenUser, userData, navigate, backendUrl, setIsLoggedIn, setUserData, setIsBlur } = useContext(AppContext)
+    const{openUser,setOpenUser, userData, navigate, backendUrl, setIsLoggedIn, setUserData,} = useContext(AppContext)
 
     const offClick = () =>{
         setOpenUser(false)
@@ -63,13 +63,13 @@ const logout = async () =>{
                     <div className='border-b'>
                         <li className='flex items-center justify-between px-5  py-2 transition-all
                          duration-150 text-md hover:bg-[#9db4f5] rounded-lg cursor-pointer'
-                        onClick={()=> {navigate('/enrollments');  setOpenUser(false);}}
+                        onClick={()=> {navigate('/enrollments'); setOpenUser(false)}}
                         >My Enrollments <FiArrowUpRight /></li>
                     </div>
 
                     <li className='flex items-center justify-between px-5  py-2 transition-all 
                     duration-150 text-md hover:bg-[#9db4f5] rounded-lg cursor-pointer'
-                     onClick={()=> {navigate('/'); setOpenUser(false); setIsBlur(false)}}
+                     onClick={()=> {navigate('/'); setOpenUser(false)}}
                     >Home <HiArrowTopRightOnSquare /></li>
 
                     <li className='flex items-center justify-between px-5  py-2 transition-all
@@ -79,7 +79,7 @@ const logout = async () =>{
 
                     <li className='flex items-center justify-between px-5  py-2 transition-all
                      duration-150 text-md hover:bg-[#9db4f5] rounded-lg cursor-pointer'
-                     onClick={()=> {navigate('/'); setOpenUser(false); setIsBlur(false)}}
+                     onClick={()=> {navigate('/'); setOpenUser(false)}}
                      >Help & Legal <HiArrowTopRightOnSquare /></li>
                 </ul>
                 

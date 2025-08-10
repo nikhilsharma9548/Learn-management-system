@@ -9,9 +9,9 @@ import { useContext } from 'react';
 import { AppContext } from '../Context/AppContext';
 
 const Home = () => {
-  const {isBlur, setIsBlur} = useContext(AppContext)
+  const {openUser,} = useContext(AppContext)
   return (
-    <div className={` ${isBlur && "  brightness-50"}`} onClick={setIsBlur()}>
+    <div className={` ${openUser && "  brightness-50"}`}>
         <Header />
         <Hero />
         <Companies />
