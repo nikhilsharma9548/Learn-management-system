@@ -141,10 +141,10 @@ export const AppContextProvider = (props)=>{
      useEffect(() =>{
         getAuthState();
     },[])
-    const [blur, setBlur] = useState(false);
-
     
- 
+    const [isBlur, setIsBlur] = useState(false)
+    
+
      const value = {
             currency,
             input,
@@ -178,8 +178,8 @@ export const AppContextProvider = (props)=>{
            backendUrl,
            openUser,
            setOpenUser,
-           blur,
-           setBlur
+           isBlur,
+           setIsBlur
      }
 
    

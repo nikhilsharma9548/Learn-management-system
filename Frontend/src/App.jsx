@@ -1,14 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import './index.css'
-import { Flip, ToastContainer } from 'react-toastify';
+import { Flip, Slide, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Header from './Components/Header';
-import Hero from './Components/Hero';
-import Companies from './Components/Companies';
-import CourseDetails from './Pages/CourseDetails';
-import CourseCard from './Components/CourseCard';
-import Testimonials from './Components/Testimonials';
-import Footer from './Components/Footer';
+import Home from './Components/Home';
+import CourseDetails from './Pages/CourseDetails'
 import CourseList from './Pages/Course-List';
 import Player from './Pages/Player';
 import MyEnrollments from './Pages/MyEnrollments';
@@ -16,25 +11,20 @@ import Loading from './Components/Loading';
 import Login from './Pages/SignUpForm/Login';
 import ResetPassword from './Pages/SignUpForm/ResetPassword';
 import UserDetails from './Pages/SignUpForm/UserDetails';
+import { useContext } from 'react';
+import { AppContext } from './Context/AppContext';
 
 function App() {
+
+  const {isBlur} = useContext(AppContext);
   return (
-    <div className="overflow-hidden text-default  min-h-screen ">
+    <div className={`overflow-hidden text-default  min-h-screen`}>
 
    
       <Routes>
           <Route 
             path="/" 
-            element={
-              <>
-               < Header />
-                <Hero />
-                <Companies />
-                <CourseCard />
-                <Testimonials />
-                <Footer />
-              </>
-            }/>
+            element={<Home />}/>
     
           <Route path='/course-list' element={<CourseList />} />
           <Route path='/course-list/:input' element={<CourseList />} />
@@ -47,7 +37,6 @@ function App() {
           
       </Routes>
             <UserDetails />
-
       {/* toaster  */}
 
        <ToastContainer
@@ -58,9 +47,10 @@ function App() {
         closeOnClick= {false}
         pauseOnHover
         draggable 
-        transition={Flip}
+        transition={Slide}
         theme='light'
         style={{
+          paddingBottom: "14px",
           color: "#95a8dd",
           fontSize: "14px",
           fontWeight: "semibild",

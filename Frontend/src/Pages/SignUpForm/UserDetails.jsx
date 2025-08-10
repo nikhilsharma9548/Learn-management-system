@@ -9,7 +9,7 @@ import { assets } from '../../assets/assets';
 
 const UserDetails = () => {
 
-    const{openUser,setOpenUser, userData, navigate, backendUrl, setIsLoggedIn, setUserData } = useContext(AppContext)
+    const{openUser,setOpenUser, userData, navigate, backendUrl, setIsLoggedIn, setUserData, setIsBlur } = useContext(AppContext)
 
     const offClick = () =>{
         setOpenUser(false)
@@ -41,7 +41,9 @@ const logout = async () =>{
         className='bg-gray-300 p-7 sm:w-96 w-72 fixed top-0 h-full  justify-self-end z-50  shaodw-xl shadow-black'>
 
             <div className='bg-blue-700 text-white px-1.5  mb-2 shadow-xl rounded cursor-pointer relative bottom-5 transition-all duration-300
-             hover:scale-105 justify-self-end items-end text-sm'onClick={offClick}>X</div>
+             hover:scale-105 justify-self-end items-end text-sm'onClick={() =>{offClick();
+              setIsBlur(false)
+             }}>X</div>
 
             <div className='md:px-5'>
                 <div className='flex flex-col px-5 py-2.5 justify-center items-center gap-1.5 rounded-lg shadow-xl bg-[#9db4f5]'>
@@ -67,7 +69,7 @@ const logout = async () =>{
 
                     <li className='flex items-center justify-between px-5  py-2 transition-all 
                     duration-150 text-md hover:bg-[#9db4f5] rounded-lg cursor-pointer'
-                     onClick={()=> {navigate('/'); setOpenUser(false)}}
+                     onClick={()=> {navigate('/'); setOpenUser(false); setIsBlur(false)}}
                     >Home <HiArrowTopRightOnSquare /></li>
 
                     <li className='flex items-center justify-between px-5  py-2 transition-all
@@ -77,7 +79,7 @@ const logout = async () =>{
 
                     <li className='flex items-center justify-between px-5  py-2 transition-all
                      duration-150 text-md hover:bg-[#9db4f5] rounded-lg cursor-pointer'
-                     onClick={()=> {navigate('/'); setOpenUser(false)}}
+                     onClick={()=> {navigate('/'); setOpenUser(false); setIsBlur(false)}}
                      >Help & Legal <HiArrowTopRightOnSquare /></li>
                 </ul>
                 
@@ -85,7 +87,7 @@ const logout = async () =>{
 
             <button className='bg-blue-600 w-full p-2.5 text-white rounded cursor-pointer mt-5 
             hover:bg-blue-700 transition-all duration-150'
-            onClick={logout}>Logout</button>
+            onClick={() =>{logout();setIsBlur(false)}}>Logout</button>
             
             </motion.div>}
     </AnimatePresence>
