@@ -9,16 +9,9 @@ import { Provider } from 'react-redux';
 import { store, persistor } from './App/store.js';
 import { PersistGate } from "redux-persist/integration/react";
 
-// Import your Publishable Key
-const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
-if (!PUBLISHABLE_KEY) {
-  throw new Error('Missing Publishable Key')
-}
- 
 createRoot(document.getElementById('root')).render(
    <BrowserRouter>
-    
        <AppContextProvider>
         <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
