@@ -42,3 +42,39 @@ body{
 .rich-text ul { margin-left: 30px; list-style-type: disc; }
 
 .rich-text li { margin-bottom: 8px; }
+
+/* index.css */
+.my-toast-container {
+  padding: 7px 10px;
+  border-radius: 10px;
+}
+
+.my-toast {
+  font-family: 'Outfit', sans-serif;
+  background-color: #3B82F6;
+  color: white;
+  border-radius: 5px;
+  border: 1px solid #1E293B;
+}
+
+/* Mobile devices */
+@media (max-width: 640px) {
+  .my-toast-container {
+    padding: 5px 8px;
+  }
+  .my-toast {
+    font-size: 12px;
+    min-height: 40px;
+  }
+}
+
+/* Large screens */
+@media (min-width: 1024px) {
+  .my-toast-container {
+    padding: 10px 14px;
+  }
+  .my-toast {
+    font-size: 16px;
+    min-height: 55px;
+  }
+}

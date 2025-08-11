@@ -88,7 +88,7 @@ const CourseDetails = () => {
 
   const handleEnrollClick = () => {
         if (!isLoggedIn) {
-          toast.info("Login first to enroll");
+          toast("Login first to enroll");
           return; 
           }
         setShowModal(true);

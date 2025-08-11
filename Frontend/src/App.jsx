@@ -40,29 +40,21 @@ function App() {
       {/* toaster  */}
 
        <ToastContainer
-        position="bottom-center" 
-        autoClose={1000}
-        hideProgressBar={true}
-        newestOnTop
-        closeOnClick
-        pauseOnHover
-        draggable 
-        transition={Slide}
-        theme='light'
-        style={{
-          paddingBottom: "10px",
-          padding: "10px 10px",
-          color: "#95a8dd",
-          borderRadius: "10px",
-        }}
-        toastStyle={{
-          fontFamily: "outfit",
-          backgroundColor: "#95a8dd",
-          color:"white",
-          borderRadius: "5px",
-          border:"2px solid white"
-        }}
-      />
+  position="bottom-center"
+  autoClose={1000}
+  hideProgressBar
+  newestOnTop
+  closeOnClick
+  pauseOnHover
+  draggable
+  theme="light"
+  transition={Slide}
+  className="!p-4 !px-6 sm:!p-0" // outer container ka padding
+  toastClassName="!bg-blue-500 !text-white !border !border-slate-800 !rounded-sm sm:!px-4 sm:!py-2 !px-2 !py-1"
+  bodyClassName="!text-white !text-sm sm:!text-base  font-outfit"
+/>
+
+
     </div>
   );
 }
