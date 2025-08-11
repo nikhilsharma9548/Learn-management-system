@@ -7,7 +7,7 @@ import ChatBox from '../ChatApp/ChatBox';
 import { AppContext } from '../Context/AppContext';
 
 const Hero = () => {
-  const{isBlur} = useContext(AppContext)
+  const{navigate} = useContext(AppContext)
   return (
     <>
     
@@ -22,7 +22,8 @@ const Hero = () => {
             </h1>      
               <p className='mt-4 text-center'>Your one-stop solution for online learning and education management.</p>
               <div className='flex items-center md:gap-3 gap-1 justify-between '>
-                <button className='p-2  max-sm:text-xs flex items-center border-gray-700 border justify-center rounded-full md:mt-10 mt-4 hover:cursor-pointer font-semibold bg-blue-300 gap-2 '>Learn More  <FaArrowRightLong /></button>
+                <button className='p-2  max-sm:text-xs flex items-center border-gray-700 border justify-center rounded-full 
+                md:mt-10 mt-4 hover:cursor-pointer font-semibold bg-blue-300 gap-2' onClick={() =>navigate('/course-list')}>Learn More  <FaArrowRightLong /></button>
               </div>
            </div>
            

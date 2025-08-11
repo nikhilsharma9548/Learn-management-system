@@ -44,21 +44,23 @@ function App() {
         autoClose={1000}
         hideProgressBar={true}
         newestOnTop
-        closeOnClick= {false}
+        closeOnClick
         pauseOnHover
         draggable 
         transition={Slide}
         theme='light'
         style={{
-          paddingBottom: "14px",
+          paddingBottom: "10px",
+          padding: "10px 10px",
           color: "#95a8dd",
-          fontSize: "14px",
-          fontWeight: "semibild",
-          borderRadius: "8px",
+          borderRadius: "10px",
         }}
         toastStyle={{
-          backgroundColor: "#2152D9",
+          fontFamily: "outfit",
+          backgroundColor: "#95a8dd",
           color:"white",
+          borderRadius: "5px",
+          border:"2px solid white"
         }}
       />
     </div>
