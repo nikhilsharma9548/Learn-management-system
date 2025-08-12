@@ -31,9 +31,7 @@ const Header = () => {
         <div>
          { userData ?
           <div className=' text-xl font-semibold h-12 w-12 flex justify-center items-center rounded-full bg-blue-800 text-white cursor-pointer
-          hover:bg-blue-900  hover:scale-95 hover:transition duration-500' onClick={() => {openUserDetails() 
-            setIsBlur(true)
-          }}>
+          hover:bg-blue-900  hover:scale-95 hover:transition duration-500' onClick={openUserDetails}>
                 {userData.name[0].toUpperCase()}
           </div> :
           <button className='bg-blue-600 text-base shadow-gray-700 cursor-pointer max-sm:text-xs  hover:transition duration-500  hover:bg-blue-800   hover:-translate-y-0.5
