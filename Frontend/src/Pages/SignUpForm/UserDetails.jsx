@@ -38,12 +38,10 @@ const logout = async () =>{
         exit={{opacity:0 , x:100}}
         transition={{duration:0.25}}
 
-        className='bg-gray-300 p-7 w-96 fixed top-0 h-full  justify-self-end z-50  shaodw-xl shadow-black'>
+        className='bg-gray-300 p-7 sm:w-96 w-full fixed top-0 h-full  justify-self-end z-50  shaodw-xl shadow-black'>
 
             <div className='bg-blue-700 text-white px-1.5  mb-2 shadow-xl rounded cursor-pointer relative bottom-5 transition-all duration-300
-             hover:scale-105 justify-self-end items-end text-sm'onClick={() =>{offClick();
-              setIsBlur(false)
-             }}>X</div>
+             hover:scale-105 justify-self-end items-end text-sm'onClick={offClick}>X</div>
 
             <div className='md:px-5'>
                 <div className='flex flex-col px-5 py-2.5 justify-center items-center gap-1.5 rounded-lg shadow-xl bg-[#9db4f5]'>
