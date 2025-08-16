@@ -18,7 +18,8 @@ export const getUserData = async(req, res) =>{
                 userData: {
                     name: user.name,
                     email: user.email,
-
+                    enrollmentNo: user.enrollmentNo,
+                    
                 }
             });
             

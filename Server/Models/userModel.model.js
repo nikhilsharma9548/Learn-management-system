@@ -18,6 +18,12 @@ const userSchema = new mongoose.Schema({
         required: true
     },
 
+    enrollmentNo: {
+        type: String,
+        default: '',
+        unique: true
+    },
+
     resetOtp: {
         type: String,
         default: '',
@@ -27,7 +33,13 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0,    
     },
-})
+    enrollCourses: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: 'Course'
+        }
+    ],
+}, {timestamps: true})
 
 const userModel = mongoose.models.user || mongoose.model('User', userSchema)
 

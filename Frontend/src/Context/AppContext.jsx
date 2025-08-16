@@ -4,6 +4,7 @@ import runGemini from "../ChatApp/gemini";
 import { useNavigate } from "react-router-dom";
 import {toast} from 'react-toastify';
 import axios from "axios";
+import { useRef } from "react";
 
 export const AppContext = createContext();  
 
@@ -109,7 +110,7 @@ export const AppContextProvider = (props)=>{
       const [isLoggedIn, setIsLoggedIn] = useState(false);
       const [userData, setUserData] = useState(false);
       const [isUser, setIsUser] = useState(false);
-      const [openUser, setOpenUser] = useState(false);
+
 
     const getAuthState = async() =>{
         try {
@@ -142,6 +143,10 @@ export const AppContextProvider = (props)=>{
         getAuthState();
     },[])
 
+          const [openUser, setOpenUser] = useState(false);       
+
+          const sidebarRef = useRef(null);
+          
      const value = {
             currency,
             input,
@@ -175,6 +180,7 @@ export const AppContextProvider = (props)=>{
            backendUrl,
            openUser,
            setOpenUser,
+           sidebarRef
      }
 
    

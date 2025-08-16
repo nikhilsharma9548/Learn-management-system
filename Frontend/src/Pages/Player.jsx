@@ -6,6 +6,7 @@ import Loading from '../Components/Loading';
 import { useParams } from 'react-router-dom';
 import { IoMdPlay } from "react-icons/io";
 import { FaPause } from "react-icons/fa6";
+import Header from '../Components/Header';
 
 const Player = () => {
 
@@ -64,6 +65,7 @@ const playerRef = useRef(null);
   };
   return courseData ? (
     <>
+      <Header />
       <div className='pt-20 lg:flex bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] '>
         {/* left column  */}
           <div className='md:p-7 h-full lg:w-[65vw] w-full '>

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext} from 'react';
 import {useSelector } from "react-redux";
 import { useNavigate } from 'react-router-dom';
 import { AppContext } from '../Context/AppContext';
@@ -13,7 +13,7 @@ const MyEnrollments = () => {
   return (
     <>
     <Header />
-    <div className={`h-full md:p-32 w-full px-8 py-20 pt-24 bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd] ${openUser && "  brightness-50"}`}>
+    <div className={`h-full md:p-32 w-full px-8 py-20 pt-24 bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]`}>
       <h1 className='text-2xl font-semibold'>My Enrollments</h1>
 
       {enrolledCourses.length === 0 ? (

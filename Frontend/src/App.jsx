@@ -37,7 +37,6 @@ function App() {
           
       </Routes>
             <UserDetails />
-      {/* toaster  */}
 
        <ToastContainer
   position="bottom-center"

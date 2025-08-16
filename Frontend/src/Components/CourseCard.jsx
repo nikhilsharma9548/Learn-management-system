@@ -1,12 +1,11 @@
-import React, { use, useContext, useEffect, useState } from 'react';
+import{useContext} from 'react';
 import { Link } from 'react-router-dom';
 import { courses } from '../assets/assets';
 import { AppContext } from '../Context/AppContext';
-import SearchBar from './SearchBar';
 
 const CourseCard = () => {
 
-  const {navigate, allCourses, currency} = useContext(AppContext);
+  const {currency} = useContext(AppContext);
   
 
   return (

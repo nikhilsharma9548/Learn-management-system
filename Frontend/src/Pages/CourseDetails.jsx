@@ -8,7 +8,7 @@ import Loading from '../Components/Loading';
 import { toast } from 'react-toastify';
 import { useDispatch } from "react-redux";
 import { useSelector } from 'react-redux';
-import { addCourse, removeCourse } from '../App/enrollSlice';
+import { addCourse,} from '../App/enrollSlice';
 import YouTube from 'react-youtube';
 import { motion, AnimatePresence } from "framer-motion";
 import Header from '../Components/Header';
@@ -97,10 +97,10 @@ const CourseDetails = () => {
   const handleClose = () => {
     setShowModal(false);
   };  
-  // const navigate = useNavigate();
+
   const {id} = useParams()
  
-  const {allCourses, navigate, currency,openUser} = useContext(AppContext);
+  const {allCourses, navigate, currency} = useContext(AppContext);
   const [showSecondDiv, setShowSecondDiv] = useState(); 
   const [playerData, setplayerData] = useState(null);
 
@@ -128,14 +128,12 @@ const getYouTubeVideoId = (url) => {
 const urlObj = new URL(url);
   return urlObj.searchParams.get("v");
 };  
-
-//discount Calculate
  
 
   return courseData ? ( 
     <>
     <Header />
-    <div className={` ${openUser && "  brightness-50"} pb-32 flex lg:flex-row flex-col-reverse gap-10  relative item-start justify-between md:px-36 px-8 md:pt-20 mt-20  pt-20 text-left  bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]`}>
+    <div className={`pb-32 flex lg:flex-row flex-col-reverse gap-10  relative item-start justify-between md:px-36 px-8 md:pt-20 mt-20  pt-20 text-left  bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]`}>
     
       {/* left column */}
       <div className='max-w-xl z-10 text-gray-600'>

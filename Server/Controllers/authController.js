@@ -18,6 +18,9 @@ export const userRegister = async(req, res) => {
     try {
 
         const existUser = await userModel.findOne({email});
+        const count = await userModel.countDocuments(); // total users count
+        const year = new Date().getFullYear(); 
+        const newEnroll = "ENR" + year + "-" + (count + 1).toString().padStart(4, "0");
 
         if(existUser){
             return res.json({success: false, message: "User Already exists"});
@@ -29,6 +32,7 @@ export const userRegister = async(req, res) => {
             name,
             email,
             password: hashedPassword,
+            enrollmentNo: newEnroll
         }); await user.save();
 
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET,{

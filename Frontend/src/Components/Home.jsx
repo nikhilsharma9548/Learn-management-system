@@ -11,7 +11,7 @@ import { AppContext } from '../Context/AppContext';
 const Home = () => {
   const {openUser,} = useContext(AppContext)
   return (
-    <div className={` ${openUser && "  brightness-50"}`}>
+    <div className={``}>
         <Header />
         <Hero />
         <Companies />

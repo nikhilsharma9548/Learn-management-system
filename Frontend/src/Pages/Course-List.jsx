@@ -12,7 +12,7 @@ const CourseList = () => {
 
   const {input} = useParams()
 
-  const{navigate, allCourses, currency,openUser} = useContext(AppContext);
+  const{navigate, allCourses, currency} = useContext(AppContext);
   const [filteredCourses, setFilteredCourses] = useState([]);
   
   useEffect(() => {
@@ -35,7 +35,7 @@ const CourseList = () => {
   return (
    <>
     < Header />
-   <div className={` ${openUser && "  brightness-50"}`}> 
+   <div> 
    <div className=' md:px-36 px-8 text-left pt-32  bg-gradient-to-r from-[#f0f4f8] to-[#95a8dd]'>
     <div className='flex md:flex-row flex-col gap-6 item-start justify-between w-full '>
         <div>
