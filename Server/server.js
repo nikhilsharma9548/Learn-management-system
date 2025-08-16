@@ -11,7 +11,7 @@ connectDB();
 const app = express()
 const PORT = process.env.PORT || 8000
 
-const allowAll =[" https://learn-management-system-frontend.vercel.app"]
+const allowAll =["https://learn-management-system-frontend.vercel.app"]
 
 //
 
