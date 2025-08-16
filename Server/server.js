@@ -13,8 +13,6 @@ const PORT = process.env.PORT || 8000
 
 const allowAll =["https://learn-management-system-frontend.vercel.app"]
 
-//
-
 
 app.use(express.json());
 app.use(cookieParser());

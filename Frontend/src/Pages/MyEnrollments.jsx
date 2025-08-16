@@ -58,7 +58,7 @@ const MyEnrollments = () => {
                 <td className='sm:py-3 py-0 max-sm:text-right flex items-center  max-sm:justify-end'>
                  <div className='flex justify-evenly gap-0 relative sm:gap-10 text-xs sm:text-base'>
                    <button
-                    className='sm:px-3 px-2 sm:py-2 py-1 relative sm:bottom-0 sm:top-20 bottom-4 max-sm:right-5 cursor-pointer text-white rounded bg-blue-600 hover:bg-blue-700'
+                    className='px-3 py-2 relative sm:bottom-0 sm:top-20 bottom-4 max-sm:right-5 cursor-pointer text-white rounded bg-blue-600 hover:bg-blue-700'
                     onClick={() => {
                       scrollTo(0, 0);
                       navigate(`/player/${course._id || course.id}`);
